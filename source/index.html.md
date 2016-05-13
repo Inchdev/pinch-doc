@@ -2,14 +2,14 @@
 title: Inch API for companies
 
 language_tabs:
-  - curl
-  - ruby
-  - python
-  - c sharp
-  - angular
-  - node
-  - java
-  - php
+  - shell: cURL
+  - ruby: Ruby
+  - python: Python
+  - csharp: C#
+  - angular: AngularJS
+  - node: NodeJS
+  - java: Java
+  - php: PHP
 
 toc_footers:
   - Contact us for a developer key
@@ -55,10 +55,12 @@ Pinch uses API keys to allow access to the API. You can register a new Pinch API
 
 Pinch expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: MY_API_KEY`
+`X-API-EMAIL: myemail@example.com`
+
+`X-API-TOKEN: MY_API_KEY`
 
 <aside class="notice">
-You must replace <code>MY_API_KEY</code> with your personal API key.
+You must replace <code>MY_API_KEY</code> with your personal API key and myemail@example.com with your registered email.
 </aside>
 
 # Webhook Types
