@@ -73,6 +73,12 @@ You must replace <code>MY_API_KEY</code> with your personal API key and myemail@
   pinch.webhook_type.list
 ```
 
+```shell
+curl -X GET -H "X-API-EMAIL: g.provider1@yahoo.fr" \
+-H "X-API-TOKEN: MY_API_KEY" \
+"https://api-company.inchbase.com/api/v1/webhook_types"
+```
+
 ```python
   import pinch
 
@@ -95,6 +101,18 @@ pinch.webhook.create({
   url: "https://example.com/ticket_creation"
 })
 ```
+
+```shell
+curl -X POST -H "Content-Type: application/json" \
+-H "X-API-EMAIL: g.provider1@yahoo.fr" \
+-H "X-API-TOKEN: MY_API_KEY" \
+-d '{
+    "url": "https://example.com/ticket_creation",
+    "webhook_type": 1
+}' "https://api-company.inchbase.com/api/v1/webhooks"
+```
+
+
 > If the parameters are correct, the above command returns JSON structured like this:
 
 ```json
@@ -139,11 +157,17 @@ Remember — You can define several webhooks, update or delete them!
 
 ## List webhooks
 
-````ruby
+```ruby
 require 'pinch'
 pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
 pinch.webhook.list
-````
+```
+
+```shell
+curl -X GET -H "X-API-EMAIL: g.provider1@yahoo.fr" \
+-H "X-API-TOKEN: MY_API_KEY" \
+"https://api-company.inchbase.com/api/v1/webhooks"
+```
 
 > If the parameters are correct, the above command returns JSON structured like this:
 
@@ -184,10 +208,16 @@ This endpoint lets you retrieve every webhooks you've configured.
 
 ````ruby
   require 'pinch'
-  webhook_id = 2
+  webhook_id = 42
   pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
   pinch.webhook.get(webhook_id)
 ````
+
+```shell
+curl -X GET -H "X-API-EMAIL: myemail@example.com" \
+-H "X-API-TOKEN: MY_API_KEY" \
+"https://api-company.inchbase.com/api/v1/webhooks/42"
+```
 
 > If the parameters are correct, the above command returns JSON structured like this:
 
@@ -228,6 +258,19 @@ This endpoint lets you retrieve a single webhook
     webhook_type: 3
   })
 ````
+
+```curl
+curl -X PUT -H "Content-Type: application/json" \
+-H "X-API-EMAIL: myemail@example.com" \
+-H "X-API-TOKEN: MY_API_KEY" -d '{
+    "webhook": {
+        "url": "https://example.com/test",
+        "webhook_type": 1
+    }
+}' "https://api-company.inchbase.com/api/v1/webhooks/42"
+```
+
+
 > If the parameters are correct, the above command returns JSON structured like this:
 
 ```json
@@ -258,10 +301,16 @@ url | This string has to be a correct url, if not, you will receive an error.
 
 ````ruby
   require 'pinch'
-  webhook_id = 2
+  webhook_id = 42
   pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
   pinch.webhook.destroy
 ````
+
+```shell
+curl -X DELETE -H "X-API-EMAIL: myemail@example.com" \
+-H "X-API-TOKEN: MY_API_KEY" \
+"https://api-company.inchbase.com/api/v1/webhooks/42"
+```
 
 > This query returns an empty answer
 
@@ -291,6 +340,12 @@ Be careful, you won't be able to access this webhook and any stats that could ha
   pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
   pinch.ticket.get ticket_id
 ````
+
+```shell
+curl -X GET -H "X-API-EMAIL: myemail@example.com" \
+-H "X-API-TOKEN: MY_API_KEY" \
+"https://api-company.inchbase.com/api/v/1tickets/{{ticket_id}}"
+```
 
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
@@ -362,6 +417,12 @@ id | The id of the ticket you want to retrieve
   pinch.ticket.list
 ````
 
+```shell
+curl -X GET -H "X-API-EMAIL: myemail@example.com" \
+-H "X-API-TOKEN: MY_API_KEY" \
+"https://api-company.inchbase.com/api/v1/tickets"
+```
+
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
 ````json
@@ -428,6 +489,12 @@ This endpoint lets you retrieve the list of all opened tickets you are currently
   pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
   pinch.ticket.accept_intervention ticket_id
 ````
+
+```shell
+curl -X POST -H "X-API-EMAIL: myemail@example.com" \
+-H "X-API-TOKEN: MY_API_KEY" \
+"https://api-company.inchbase.com/api/v1/42/accept"
+```
 
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
@@ -500,6 +567,16 @@ id | The id of the ticket whose intervention you want to accept
   pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
   pinch.ticket.set_intervention_date date, ticket_id
 ````
+
+```shell
+curl -X POST -H "X-API-EMAIL: myemail@example.com" \
+-H "X-API-TOKEN: MY_API_KEY" \
+-H "Content-Type: application/json" \
+-d '{
+    "intervention_date": "2016-05-11T20:03:46.769+02:00"
+}' \
+"https://api-company.inchbase.com/tickets/42/set_intervention_date"
+```
 
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
@@ -574,6 +651,16 @@ intervention_date | The date the intervention was done
   pinch.ticket.declare_intervention_done ticket_id, date
 ````
 
+```shell
+curl -X POST -H "X-API-EMAIL: myemail@example.com" \
+-H "X-API-TOKEN: MY_API_KEY" \
+-H "Content-Type: application/json" \
+-d '{
+    "intervention_date": "2016-05-11T20:03:46.769+02:00"
+}' \
+"https://api-company.inchbase.com/tickets/42/declare_intervention_done"
+```
+
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
 ````json
@@ -646,9 +733,20 @@ intervention_date | The date the intervention was done
 ````ruby
   require 'pinch'
   ticket_id = 42
+  body = "Salut"
   pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
   pinch.ticket.send_message body, ticket_id
 ````
+
+```shell
+curl -X POST -H "X-API-EMAIL: myemail@example.com" \
+-H "X-API-TOKEN: MY_API_KEY" \
+-H "Content-Type: application/json" \
+-d '{
+    "body": "Salut"
+}' \
+"https://api-company.inchbase.com/api/v1/tickets/42/message"
+```
 
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
@@ -722,6 +820,14 @@ body | The body of the message
   pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
   pinch.ticket.upload_document file, ticket_id
 ````
+
+```shell
+curl -X POST -H "X-API-EMAIL: myemail@example.com" \
+-H "X-API-TOKEN: MY_API_KEY" \
+-H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" \
+-F "file=@my_path.txt" \
+"https://api-company.inchbase.com/api/v1/tickets/42/document_upload"
+```
 
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
@@ -799,6 +905,14 @@ file | The file to upload
   pinch.ticket.upload_picture file, ticket_id
 ````
 
+```shell
+curl -X POST -H "X-API-EMAIL: myemail@example.com" \
+-H "X-API-TOKEN: MY_API_KEY" \
+-H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" \
+-F "file=@my_path.txt" \
+"https://api-company.inchbase.com/api/v1/tickets/42/picture_upload"
+```
+
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
 ````json
@@ -873,6 +987,14 @@ file | The picture to upload
   pinch.ticket.upload_quote file, ticket_id
 ````
 
+```shell
+curl -X POST -H "X-API-EMAIL: myemail@example.com" \
+-H "X-API-TOKEN: MY_API_KEY" \
+-H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" \
+-F "file=@my_path.txt" \
+"https://api-company.inchbase.com/api/v1/tickets/42/quote_upload"
+```
+
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
 ````json
@@ -945,6 +1067,14 @@ file | The quote to upload
   pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
   pinch.ticket.upload_invoice file, ticket_id
 ````
+
+```shell
+curl -X POST -H "X-API-EMAIL: myemail@example.com" \
+-H "X-API-TOKEN: MY_API_KEY" \
+-H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" \
+-F "file=@my_path.txt" \
+"https://api-company.inchbase.com/api/v1/tickets/42/invoice_upload"
+```
 
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
