@@ -1,0 +1,35 @@
+# Authentication
+
+> To authorize, use this code:
+
+```ruby
+require 'pinch'
+
+pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+```
+
+```python
+import pinch
+
+api = pinch.authorize('MY_API_KEY')
+```
+
+```shell
+# With shell, you can just pass the correct header with each request
+curl "https://company.inchbase.com/api/v1"
+  -H "Authorization: MY_API_KEY"
+```
+
+> Make sure to replace `MY_API_KEY` with your API key.
+
+Pinch uses API keys to allow access to the API. You can register a new Pinch API key by contacting us.
+
+Pinch expects for the API key to be included in all API requests to the server in a header that looks like the following:
+
+`X-API-EMAIL: myemail@example.com`
+
+`X-API-TOKEN: MY_API_KEY`
+
+<aside class="notice">
+You must replace <code>MY_API_KEY</code> with your personal API key and myemail@example.com with your registered email.
+</aside>
