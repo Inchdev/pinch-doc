@@ -1,14 +1,19 @@
 ---
-title: API Reference
+title: Inch API for companies
 
 language_tabs:
-  - shell
+  - curl
   - ruby
   - python
+  - c sharp
+  - angular
+  - node
+  - java
+  - php
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - Contact us for a developer key
+  - <a href='mailto:contact@inchbase.com'>contact@inchbase.com</a>
 
 includes:
   - errors
@@ -18,151 +23,986 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Inch API! You can use our API to access Inch API endpoints, which can get help you configure webhooks to instantly receive ticket creations and update them.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+We have language bindings in Shell, Ruby, Python and C Sharp, AngularJS, NodeJS, Java and PHP ! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
 # Authentication
 
 > To authorize, use this code:
 
 ```ruby
-require 'kittn'
+require 'pinch'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
 ```
 
 ```python
-import kittn
+import pinch
 
-api = kittn.authorize('meowmeowmeow')
+api = pinch.authorize('MY_API_KEY')
 ```
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl "https://company.inchbase.com/api/v1"
+  -H "Authorization: MY_API_KEY"
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace `MY_API_KEY` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+Pinch uses API keys to allow access to the API. You can register a new Pinch API key by contacting us.
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+Pinch expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
+`Authorization: MY_API_KEY`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>MY_API_KEY</code> with your personal API key.
 </aside>
 
-# Kittens
+# Webhook Types
 
-## Get All Kittens
+## Get the webhook types
 
 ```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
+  require 'pinch'
+  pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+  pinch.webhook_type.list
 ```
 
 ```python
-import kittn
+  import pinch
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
+  pinch = pinch.authorize('MY_API_KEY')
+  pinch.webhook_types()
 ```
 
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
+This methods allows you see what webhooks you can register via the API.
 
-> The above command returns JSON structured like this:
+# Webhooks
+
+## Create a webhook
+
+```ruby
+require 'pinch'
+
+pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+pinch.webhook.create({
+  webhook_type: 1, # Ticket creation
+  url: "https://example.com/ticket_creation"
+})
+```
+> If the parameters are correct, the above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+  "id": 1,
+  "url": "https://example.com/ticket_creation",
+  "webhook_type": 1,
+  "created_at": "2016-05-11T20:03:46.769+02:00",
+  "updated_at": "2016-05-11T20:03:46.769+02:00"
+}
 ```
 
-This endpoint retrieves all kittens.
+> If there is an error, you will receive an answer that looks like this :
+
+```json
+{
+  "errors": {
+    "webhook_type": [
+      "can't be blank"
+    ]
+  }
+}
+```
+
+This endpoint creates a webhook for the specified event.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`POST https://company.inchbase.com/api/v1/webhooks`
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+Parameter | Description
+--------- | -----------
+webhook_type | You have to set this value to one of the values returned by the webhook types list
+url | This string has to be a correct url, if not, you will receive an error.
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Remember — You can define several webhooks, update or delete them!
 </aside>
 
-## Get a Specific Kitten
 
-```ruby
-require 'kittn'
+## List webhooks
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
+````ruby
+require 'pinch'
+pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+pinch.webhook.list
+````
+
+> If the parameters are correct, the above command returns JSON structured like this:
+
+```json
+[{
+  "id": 1,
+  "url": "https://example.com/ticket_creation",
+  "webhook_type": 1,
+  "created_at": "2016-05-11T20:03:46.769+02:00",
+  "updated_at": "2016-05-11T20:03:46.769+02:00"
+},{
+  "id": 2,
+  "url": "https://example.com/ticket_new_message",
+  "webhook_type": 2,
+  "created_at": "2016-05-11T20:03:46.769+02:00",
+  "updated_at": "2016-05-11T20:03:46.769+02:00"
+}]
 ```
 
-```python
-import kittn
+> If there is an error, you will receive an answer that looks like this :
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
+```json
+{
+  "errors": {
+    ...
+  }
+}
 ```
 
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
+This endpoint lets you retrieve every webhooks you've configured.
 
-> The above command returns JSON structured like this:
+### HTTP Request
+
+`GET https://api-company.inchbase.com/api/v1/webhooks`
+
+
+## Get a webhook
+
+````ruby
+  require 'pinch'
+  webhook_id = 2
+  pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+  pinch.webhook.get(webhook_id)
+````
+
+> If the parameters are correct, the above command returns JSON structured like this:
 
 ```json
 {
   "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "url": "https://example.com/ticket_new_message",
+  "webhook_type": 3,
+  "created_at": "2016-05-11T20:03:46.769+02:00",
+  "updated_at": "2016-05-11T20:03:46.769+02:00"
 }
 ```
 
-This endpoint retrieves a specific kitten.
+> If there is an error, you will receive an answer that looks like this :
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+```json
+{
+  "errors": {
+    ...
+  }
+}
+```
+
+This endpoint lets you retrieve a single webhook
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET https://api-company.inchbase.com/api/v1/webhooks/:id`
 
-### URL Parameters
+## Update a webhook
+
+````ruby
+  require 'pinch'
+  webhook_id = 2
+  pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+  pinch.webhook.update(webhook_id, {
+    url: "https://example.com/test",
+    webhook_type: 3
+  })
+````
+> If the parameters are correct, the above command returns JSON structured like this:
+
+```json
+{
+  "id": 2,
+  "url": "https://example.com/test",
+  "webhook_type": 3,
+  "created_at": "2016-05-11T20:03:46.769+02:00",
+  "updated_at": "2016-05-11T20:03:46.769+02:00"
+}
+```
+
+This endpoint lets you retrieve a webhook by using its id. The parameters you can update are the url and the webhook type.
+
+### HTTP Request
+
+`PUT/PATCH https://api-company.inchbase.com/api/v1/webhooks/:id`
+
+### Query Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+id | The id of the webhook you want to update
+webhook_type | You have to set this value to one of the values returned by the webhook types list
+url | This string has to be a correct url, if not, you will receive an error.
 
+## Destroy a webhook
+
+````ruby
+  require 'pinch'
+  webhook_id = 2
+  pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+  pinch.webhook.destroy
+````
+
+> This query returns an empty answer
+
+This endpoint lets you destroy a webhook by using its id.
+
+### HTTP Request
+
+`DELETE https://api-company.inchbase.com/api/v1/webhooks/:id`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+id | The id of the webhook you want to destroy
+
+<aside class="warning">
+Be careful, you won't be able to access this webhook and any stats that could have been generated will also be destroyed
+</aside>
+
+# Tickets
+
+## Get a ticket
+
+````ruby
+  require 'pinch'
+  ticket_id = 42
+  pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+  pinch.ticket.get ticket_id
+````
+
+> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
+
+````json
+{
+  "id": 42,
+  "name": "Gaine électrique arrachée",
+  "description": "Dans le hall B",
+  "contacts": [{
+    "firstname": "Martin",
+    "lastname": "Dupont",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Resident"
+  },{
+    "firstname": "Jean",
+    "lastname": "Durand",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Caretaker"
+  }],
+  "status": "En attente de la facture",
+  "building": {
+    "reference": "1234",
+    "name": "ALPINA 4",
+    "address": "46 Rue René Clair",
+    "zip_code": "92700",
+    "city": "Paris",
+    "country": "France",
+    "latitude": "48.8939624",
+    "longitude": "2.3518942"
+  },
+  "unit": {
+    "reference": "002",
+    "tenant_name": "Lucas Ferrand",
+    "floor_number": "4",
+    "kind": "Grenier",
+    "french_floor_number": "4ème Gauche"
+  },
+  "access": "Digicode : 4633B",
+  "agency": "Cabinet Inch Immobilier",
+  "manager": "Thomas THIMOTHÉE",
+  "created_at": "2016-05-11T20:03:46.769+02:00",
+  "updated_at": "2016-05-11T20:03:46.769+02:00"
+}
+````
+
+This endpoint lets you retrieve a ticket.
+
+### HTTP Request
+
+`GET https://api-company.inchbase.com/api/v1/tickets/:id`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+id | The id of the ticket you want to retrieve
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+## List opened tickets
+
+````ruby
+  require 'pinch'
+  pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+  pinch.ticket.list
+````
+
+> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
+
+````json
+[{
+  "id": 42,
+  "name": "Gaine électrique arrachée",
+  "description": "Dans le hall B",
+  "contacts": [{
+    "firstname": "Martin",
+    "lastname": "Dupont",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Resident"
+  },{
+    "firstname": "Jean",
+    "lastname": "Durand",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Caretaker"
+  }],
+  "status": "En attente de la facture",
+  "building": {
+    "reference": "1234",
+    "name": "ALPINA 4",
+    "address": "46 Rue René Clair",
+    "zip_code": "92700",
+    "city": "Paris",
+    "country": "France",
+    "latitude": "48.8939624",
+    "longitude": "2.3518942"
+  },
+  "unit": {
+    "reference": "002",
+    "tenant_name": "Lucas Ferrand",
+    "floor_number": "4",
+    "kind": "Grenier",
+    "french_floor_number": "4ème Gauche"
+  },
+  "access": "Digicode : 4633B",
+  "agency": "Cabinet Inch Immobilier",
+  "manager": "Thomas THIMOTHÉE",
+  "created_at": "2016-05-11T20:03:46.769+02:00",
+  "updated_at": "2016-05-11T20:03:46.769+02:00"
+},
+...
+]
+````
+
+This endpoint lets you retrieve the list of all opened tickets you are currently dealing with. It may be quote or intervention requests. 
+
+### HTTP Request
+
+`GET https://api-company.inchbase.com/api/v1/tickets`
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+## Accept an intervention
+
+````ruby
+  require 'pinch'
+  ticket_id = 42
+  pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+  pinch.ticket.accept_intervention ticket_id
+````
+
+> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
+
+````json
+{
+  "id": 42,
+  "name": "Gaine électrique arrachée",
+  "description": "Dans le hall B",
+  "contacts": [{
+    "firstname": "Martin",
+    "lastname": "Dupont",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Resident"
+  },{
+    "firstname": "Jean",
+    "lastname": "Durand",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Caretaker"
+  }],
+  "status": "En attente de la facture",
+  "building": {
+    "reference": "1234",
+    "name": "ALPINA 4",
+    "address": "46 Rue René Clair",
+    "zip_code": "92700",
+    "city": "Paris",
+    "country": "France",
+    "latitude": "48.8939624",
+    "longitude": "2.3518942"
+  },
+  "unit": {
+    "reference": "002",
+    "tenant_name": "Lucas Ferrand",
+    "floor_number": "4",
+    "kind": "Grenier",
+    "french_floor_number": "4ème Gauche"
+  },
+  "access": "Digicode : 4633B",
+  "agency": "Cabinet Inch Immobilier",
+  "manager": "Thomas THIMOTHÉE",
+  "created_at": "2016-05-11T20:03:46.769+02:00",
+  "updated_at": "2016-05-11T20:03:46.769+02:00"
+}
+````
+
+When you want to notify the manager that you accepted the intervention, you can use this endpoint.
+
+### HTTP Request
+
+`POST https://api-company.inchbase.com/api/v1/tickets/:id/accept_intervention`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+id | The id of the ticket whose intervention you want to accept
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+## Set an intervention date
+
+````ruby
+  require 'pinch'
+  ticket_id = 42
+  date = 2.months.ago
+  pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+  pinch.ticket.set_intervention_date date, ticket_id
+````
+
+> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
+
+````json
+{
+  "id": 42,
+  "name": "Gaine électrique arrachée",
+  "description": "Dans le hall B",
+  "contacts": [{
+    "firstname": "Martin",
+    "lastname": "Dupont",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Resident"
+  },{
+    "firstname": "Jean",
+    "lastname": "Durand",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Caretaker"
+  }],
+  "status": "En attente de la facture",
+  "building": {
+    "reference": "1234",
+    "name": "ALPINA 4",
+    "address": "46 Rue René Clair",
+    "zip_code": "92700",
+    "city": "Paris",
+    "country": "France",
+    "latitude": "48.8939624",
+    "longitude": "2.3518942"
+  },
+  "unit": {
+    "reference": "002",
+    "tenant_name": "Lucas Ferrand",
+    "floor_number": "4",
+    "kind": "Grenier",
+    "french_floor_number": "4ème Gauche"
+  },
+  "access": "Digicode : 4633B",
+  "agency": "Cabinet Inch Immobilier",
+  "manager": "Thomas THIMOTHÉE",
+  "created_at": "2016-05-11T20:03:46.769+02:00",
+  "updated_at": "2016-05-11T20:03:46.769+02:00"
+}
+````
+
+To inform the manager and notify the residents of an intervention date, you can use this endpoint.
+
+### HTTP Request
+
+`POST https://api-company.inchbase.com/api/v1/tickets/:id/set_intervention_date`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+id | The id of the ticket whose intervention date you want to set
+intervention_date | The date the intervention was done
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+## Declare an intervention as done
+
+````ruby
+  require 'pinch'
+  ticket_id = 42
+  date = 2.months.ago # Optional
+  pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+  pinch.ticket.declare_intervention_done ticket_id, date
+````
+
+> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
+
+````json
+{
+  "id": 42,
+  "name": "Gaine électrique arrachée",
+  "description": "Dans le hall B",
+  "contacts": [{
+    "firstname": "Martin",
+    "lastname": "Dupont",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Resident"
+  },{
+    "firstname": "Jean",
+    "lastname": "Durand",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Caretaker"
+  }],
+  "status": "En attente de la facture",
+  "building": {
+    "reference": "1234",
+    "name": "ALPINA 4",
+    "address": "46 Rue René Clair",
+    "zip_code": "92700",
+    "city": "Paris",
+    "country": "France",
+    "latitude": "48.8939624",
+    "longitude": "2.3518942"
+  },
+  "unit": {
+    "reference": "002",
+    "tenant_name": "Lucas Ferrand",
+    "floor_number": "4",
+    "kind": "Grenier",
+    "french_floor_number": "4ème Gauche"
+  },
+  "access": "Digicode : 4633B",
+  "agency": "Cabinet Inch Immobilier",
+  "manager": "Thomas THIMOTHÉE",
+  "created_at": "2016-05-11T20:03:46.769+02:00",
+  "updated_at": "2016-05-11T20:03:46.769+02:00"
+}
+````
+
+You should use this endpoint when you have finished an intervention.
+
+### HTTP Request
+
+`POST https://api-company.inchbase.com/api/v1/tickets/:id/accept_intervention`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+id | The id of the ticket whose intervention you want to accept
+intervention_date | The date the intervention was done
+
+<aside class="notice">
+  The intervention date can be sent but is optional
+</aside>
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+## Send a message in a ticket
+
+````ruby
+  require 'pinch'
+  ticket_id = 42
+  pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+  pinch.ticket.send_message body, ticket_id
+````
+
+> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
+
+````json
+{
+  "id": 42,
+  "name": "Gaine électrique arrachée",
+  "description": "Dans le hall B",
+  "contacts": [{
+    "firstname": "Martin",
+    "lastname": "Dupont",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Resident"
+  },{
+    "firstname": "Jean",
+    "lastname": "Durand",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Caretaker"
+  }],
+  "status": "En attente de la facture",
+  "building": {
+    "reference": "1234",
+    "name": "ALPINA 4",
+    "address": "46 Rue René Clair",
+    "zip_code": "92700",
+    "city": "Paris",
+    "country": "France",
+    "latitude": "48.8939624",
+    "longitude": "2.3518942"
+  },
+  "unit": {
+    "reference": "002",
+    "tenant_name": "Lucas Ferrand",
+    "floor_number": "4",
+    "kind": "Grenier",
+    "french_floor_number": "4ème Gauche"
+  },
+  "access": "Digicode : 4633B",
+  "agency": "Cabinet Inch Immobilier",
+  "manager": "Thomas THIMOTHÉE",
+  "created_at": "2016-05-11T20:03:46.769+02:00",
+  "updated_at": "2016-05-11T20:03:46.769+02:00"
+}
+````
+
+You can use this endpoint to send a message to the manager of the ticket.
+
+### HTTP Request
+
+`POST https://api-company.inchbase.com/api/v1/tickets/:id/accept_intervention`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+id | The id of the ticket
+body | The body of the message
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+## Upload a document
+
+````ruby
+  require 'pinch'
+  ticket_id = 42
+  file = File.new('my_path.txt', 'rb')
+  pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+  pinch.ticket.upload_document file, ticket_id
+````
+
+> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
+
+````json
+{
+  "id": 42,
+  "name": "Gaine électrique arrachée",
+  "description": "Dans le hall B",
+  "contacts": [{
+    "firstname": "Martin",
+    "lastname": "Dupont",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Resident"
+  },{
+    "firstname": "Jean",
+    "lastname": "Durand",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Caretaker"
+  }],
+  "status": "En attente de la facture",
+  "building": {
+    "reference": "1234",
+    "name": "ALPINA 4",
+    "address": "46 Rue René Clair",
+    "zip_code": "92700",
+    "city": "Paris",
+    "country": "France",
+    "latitude": "48.8939624",
+    "longitude": "2.3518942"
+  },
+  "unit": {
+    "reference": "002",
+    "tenant_name": "Lucas Ferrand",
+    "floor_number": "4",
+    "kind": "Grenier",
+    "french_floor_number": "4ème Gauche"
+  },
+  "access": "Digicode : 4633B",
+  "agency": "Cabinet Inch Immobilier",
+  "manager": "Thomas THIMOTHÉE",
+  "created_at": "2016-05-11T20:03:46.769+02:00",
+  "updated_at": "2016-05-11T20:03:46.769+02:00"
+}
+````
+
+This endpoint allows you to update any documents that are related to the ticket but are neither quotes, nor invoices, nor pictures.
+
+### HTTP Request
+
+`POST https://api-company.inchbase.com/api/v1/tickets/:id/upload_document`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+id | The id of the ticket
+file | The file to upload
+
+<aside class='warning'>You should not upload quotes, invoices or pictures via this endpoint!</aside>
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+
+## Upload a picture
+
+````ruby
+  require 'pinch'
+  ticket_id = 42
+  file = File.new('my_path.txt', 'rb')
+  pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+  pinch.ticket.upload_picture file, ticket_id
+````
+
+> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
+
+````json
+{
+  "id": 42,
+  "name": "Gaine électrique arrachée",
+  "description": "Dans le hall B",
+  "contacts": [{
+    "firstname": "Martin",
+    "lastname": "Dupont",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Resident"
+  },{
+    "firstname": "Jean",
+    "lastname": "Durand",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Caretaker"
+  }],
+  "status": "En attente de la facture",
+  "building": {
+    "reference": "1234",
+    "name": "ALPINA 4",
+    "address": "46 Rue René Clair",
+    "zip_code": "92700",
+    "city": "Paris",
+    "country": "France",
+    "latitude": "48.8939624",
+    "longitude": "2.3518942"
+  },
+  "unit": {
+    "reference": "002",
+    "tenant_name": "Lucas Ferrand",
+    "floor_number": "4",
+    "kind": "Grenier",
+    "french_floor_number": "4ème Gauche"
+  },
+  "access": "Digicode : 4633B",
+  "agency": "Cabinet Inch Immobilier",
+  "manager": "Thomas THIMOTHÉE",
+  "created_at": "2016-05-11T20:03:46.769+02:00",
+  "updated_at": "2016-05-11T20:03:46.769+02:00"
+}
+````
+
+You can upload here any picture related to the ticket (before or after it has been done).
+
+### HTTP Request
+
+`POST https://api-company.inchbase.com/api/v1/tickets/:id/upload_picture`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+id | The id of the ticket
+file | The picture to upload
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+
+## Upload a quote
+
+````ruby
+  require 'pinch'
+  ticket_id = 42
+  file = File.new('my_path.txt', 'rb')
+  pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+  pinch.ticket.upload_quote file, ticket_id
+````
+
+> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
+
+````json
+{
+  "id": 42,
+  "name": "Gaine électrique arrachée",
+  "description": "Dans le hall B",
+  "contacts": [{
+    "firstname": "Martin",
+    "lastname": "Dupont",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Resident"
+  },{
+    "firstname": "Jean",
+    "lastname": "Durand",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Caretaker"
+  }],
+  "status": "En attente de la facture",
+  "building": {
+    "reference": "1234",
+    "name": "ALPINA 4",
+    "address": "46 Rue René Clair",
+    "zip_code": "92700",
+    "city": "Paris",
+    "country": "France",
+    "latitude": "48.8939624",
+    "longitude": "2.3518942"
+  },
+  "unit": {
+    "reference": "002",
+    "tenant_name": "Lucas Ferrand",
+    "floor_number": "4",
+    "kind": "Grenier",
+    "french_floor_number": "4ème Gauche"
+  },
+  "access": "Digicode : 4633B",
+  "agency": "Cabinet Inch Immobilier",
+  "manager": "Thomas THIMOTHÉE",
+  "created_at": "2016-05-11T20:03:46.769+02:00",
+  "updated_at": "2016-05-11T20:03:46.769+02:00"
+}
+````
+
+When being asked for a quote, you can use this endpoint to send your quote.
+
+### HTTP Request
+
+`POST https://api-company.inchbase.com/api/v1/tickets/:id/upload_quote`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+id | The id of the ticket
+file | The quote to upload
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+## Upload an invoice
+
+````ruby
+  require 'pinch'
+  ticket_id = 42
+  file = File.new('my_path.txt', 'rb')
+  pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+  pinch.ticket.upload_invoice file, ticket_id
+````
+
+> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
+
+````json
+{
+  "id": 42,
+  "name": "Gaine électrique arrachée",
+  "description": "Dans le hall B",
+  "contacts": [{
+    "firstname": "Martin",
+    "lastname": "Dupont",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Resident"
+  },{
+    "firstname": "Jean",
+    "lastname": "Durand",
+    "home_phone_number": "01 02 03 04 05",
+    "mobile_phone_number": "06 01 02 03 04",
+    "role": "Caretaker"
+  }],
+  "status": "En attente de la facture",
+  "building": {
+    "reference": "1234",
+    "name": "ALPINA 4",
+    "address": "46 Rue René Clair",
+    "zip_code": "92700",
+    "city": "Paris",
+    "country": "France",
+    "latitude": "48.8939624",
+    "longitude": "2.3518942"
+  },
+  "unit": {
+    "reference": "002",
+    "tenant_name": "Lucas Ferrand",
+    "floor_number": "4",
+    "kind": "Grenier",
+    "french_floor_number": "4ème Gauche"
+  },
+  "access": "Digicode : 4633B",
+  "agency": "Cabinet Inch Immobilier",
+  "manager": "Thomas THIMOTHÉE",
+  "created_at": "2016-05-11T20:03:46.769+02:00",
+  "updated_at": "2016-05-11T20:03:46.769+02:00"
+}
+````
+
+When being asked for an invoice, you can use this endpoint to send your invoice.
+
+### HTTP Request
+
+`POST https://api-company.inchbase.com/api/v1/tickets/:id/upload_invoice`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+id | The id of the ticket
+file | The invoice to upload
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
