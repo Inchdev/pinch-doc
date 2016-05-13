@@ -4,10 +4,8 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Inch API for companies</title>
 
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -88,10 +86,12 @@
   color: #90a959;
 }
     </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;csharp&quot;,&quot;angular&quot;,&quot;node&quot;,&quot;java&quot;,&quot;php&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -101,9 +101,14 @@
     <div class="tocify-wrapper">
       <img src="images/logo.png" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="shell">cURL</a>
+              <a href="#" data-language-name="ruby">Ruby</a>
+              <a href="#" data-language-name="python">Python</a>
+              <a href="#" data-language-name="csharp">C#</a>
+              <a href="#" data-language-name="angular">AngularJS</a>
+              <a href="#" data-language-name="node">NodeJS</a>
+              <a href="#" data-language-name="java">Java</a>
+              <a href="#" data-language-name="php">PHP</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -112,8 +117,8 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+            <li>Contact us for a developer key</li>
+            <li><a href='mailto:contact@inchbase.com'>contact@inchbase.com</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -121,149 +126,227 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to the Inch API! You can use our API to access Inch API endpoints, which can get help you configure webhooks to instantly receive ticket creations and update them.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p>We have language bindings in Shell, Ruby, Python and C Sharp, AngularJS, NodeJS, Java and PHP ! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 
 <h1 id="authentication">Authentication</h1>
 
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'pinch'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
 </code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">pinch</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">pinch</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'MY_API_KEY'</span><span class="p">)</span>
 </code></pre>
 <pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+curl <span class="s2">"https://company.inchbase.com/api/v1"</span>
+  -H <span class="s2">"Authorization: MY_API_KEY"</span>
 </code></pre>
 
 <blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
+<p>Make sure to replace <code class="prettyprint">MY_API_KEY</code> with your API key.</p>
 </blockquote>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>Pinch uses API keys to allow access to the API. You can register a new Pinch API key by contacting us.</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>Pinch expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
+<p><code class="prettyprint">X-API-EMAIL: myemail@example.com</code></p>
+
+<p><code class="prettyprint">X-API-TOKEN: MY_API_KEY</code></p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>MY_API_KEY</code> with your personal API key and myemail@example.com with your registered email.
 </aside>
 
-<h1 id="kittens">Kittens</h1>
+<h1 id="webhook-types">Webhook Types</h1>
 
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
+<h2 id="get-the-webhook-types">Get the webhook types</h2>
+<pre class="highlight ruby"><code>  <span class="nb">require</span> <span class="s1">'pinch'</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+  <span class="n">pinch</span><span class="p">.</span><span class="nf">webhook_type</span><span class="p">.</span><span class="nf">list</span>
 </code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<pre class="highlight python"><code>  <span class="kn">import</span> <span class="nn">pinch</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="n">pinch</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'MY_API_KEY'</span><span class="p">)</span>
+  <span class="n">pinch</span><span class="o">.</span><span class="n">webhook_types</span><span class="p">()</span>
 </code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+
+<p>This methods allows you see what webhooks you can register via the API.</p>
+
+<h1 id="webhooks">Webhooks</h1>
+
+<h2 id="create-a-webhook">Create a webhook</h2>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'pinch'</span>
+
+<span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+<span class="n">pinch</span><span class="p">.</span><span class="nf">webhook</span><span class="p">.</span><span class="nf">create</span><span class="p">({</span>
+  <span class="ss">webhook_type: </span><span class="mi">1</span><span class="p">,</span> <span class="c1"># Ticket creation</span>
+  <span class="ss">url: </span><span class="s2">"https://example.com/ticket_creation"</span>
+<span class="p">})</span>
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>If the parameters are correct, the above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/ticket_creation"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"webhook_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all kittens.</p>
+<blockquote>
+<p>If there is an error, you will receive an answer that looks like this :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"webhook_type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"can't be blank"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint creates a webhook for the specified event.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
+<p><code class="prettyprint">POST https://company.inchbase.com/api/v1/webhooks</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>webhook_type</td>
+<td>You have to set this value to one of the values returned by the webhook types list</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>url</td>
+<td>This string has to be a correct url, if not, you will receive an error.</td>
 </tr>
 </tbody></table>
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Remember — You can define several webhooks, update or delete them!
 </aside>
 
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<h2 id="list-webhooks">List webhooks</h2>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'pinch'</span>
+<span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+<span class="n">pinch</span><span class="p">.</span><span class="nf">webhook</span><span class="p">.</span><span class="nf">list</span>
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>If the parameters are correct, the above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/ticket_creation"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"webhook_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
+</span><span class="p">},{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/ticket_new_message"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"webhook_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If there is an error, you will receive an answer that looks like this :</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>This endpoint lets you retrieve every webhooks you&rsquo;ve configured.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET https://api-company.inchbase.com/api/v1/webhooks</code></p>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<h2 id="get-a-webhook">Get a webhook</h2>
+<pre class="highlight ruby"><code>  <span class="nb">require</span> <span class="s1">'pinch'</span>
+  <span class="n">webhook_id</span> <span class="o">=</span> <span class="mi">2</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+  <span class="n">pinch</span><span class="p">.</span><span class="nf">webhook</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">webhook_id</span><span class="p">)</span>
+</code></pre>
+
+<blockquote>
+<p>If the parameters are correct, the above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/ticket_new_message"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"webhook_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>If there is an error, you will receive an answer that looks like this :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint lets you retrieve a single webhook</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api-company.inchbase.com/api/v1/webhooks/:id</code></p>
+
+<h2 id="update-a-webhook">Update a webhook</h2>
+<pre class="highlight ruby"><code>  <span class="nb">require</span> <span class="s1">'pinch'</span>
+  <span class="n">webhook_id</span> <span class="o">=</span> <span class="mi">2</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+  <span class="n">pinch</span><span class="p">.</span><span class="nf">webhook</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="n">webhook_id</span><span class="p">,</span> <span class="p">{</span>
+    <span class="ss">url: </span><span class="s2">"https://example.com/test"</span><span class="p">,</span>
+    <span class="ss">webhook_type: </span><span class="mi">3</span>
+  <span class="p">})</span>
+</code></pre>
+
+<blockquote>
+<p>If the parameters are correct, the above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/test"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"webhook_type"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint lets you retrieve a webhook by using its id. The parameters you can update are the url and the webhook type.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PUT/PATCH https://api-company.inchbase.com/api/v1/webhooks/:id</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
 
 <table><thead>
 <tr>
@@ -272,10 +355,852 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>id</td>
+<td>The id of the webhook you want to update</td>
+</tr>
+<tr>
+<td>webhook_type</td>
+<td>You have to set this value to one of the values returned by the webhook types list</td>
+</tr>
+<tr>
+<td>url</td>
+<td>This string has to be a correct url, if not, you will receive an error.</td>
 </tr>
 </tbody></table>
+
+<h2 id="destroy-a-webhook">Destroy a webhook</h2>
+<pre class="highlight ruby"><code>  <span class="nb">require</span> <span class="s1">'pinch'</span>
+  <span class="n">webhook_id</span> <span class="o">=</span> <span class="mi">2</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+  <span class="n">pinch</span><span class="p">.</span><span class="nf">webhook</span><span class="p">.</span><span class="nf">destroy</span>
+</code></pre>
+
+<blockquote>
+<p>This query returns an empty answer</p>
+</blockquote>
+
+<p>This endpoint lets you destroy a webhook by using its id.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE https://api-company.inchbase.com/api/v1/webhooks/:id</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the webhook you want to destroy</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+Be careful, you won&rsquo;t be able to access this webhook and any stats that could have been generated will also be destroyed
+</aside>
+
+<h1 id="tickets">Tickets</h1>
+
+<h2 id="get-a-ticket">Get a ticket</h2>
+<pre class="highlight ruby"><code>  <span class="nb">require</span> <span class="s1">'pinch'</span>
+  <span class="n">ticket_id</span> <span class="o">=</span> <span class="mi">42</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+  <span class="n">pinch</span><span class="p">.</span><span class="nf">ticket</span><span class="p">.</span><span class="nf">get</span> <span class="n">ticket_id</span>
+</code></pre>
+
+<blockquote>
+<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
+  </span><span class="p">},{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint lets you retrieve a ticket.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api-company.inchbase.com/api/v1/tickets/:id</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the ticket you want to retrieve</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+<h2 id="list-opened-tickets">List opened tickets</h2>
+<pre class="highlight ruby"><code>  <span class="nb">require</span> <span class="s1">'pinch'</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+  <span class="n">pinch</span><span class="p">.</span><span class="nf">ticket</span><span class="p">.</span><span class="nf">list</span>
+</code></pre>
+
+<blockquote>
+<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
+  </span><span class="p">},{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint lets you retrieve the list of all opened tickets you are currently dealing with. It may be quote or intervention requests. </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api-company.inchbase.com/api/v1/tickets</code></p>
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+<h2 id="accept-an-intervention">Accept an intervention</h2>
+<pre class="highlight ruby"><code>  <span class="nb">require</span> <span class="s1">'pinch'</span>
+  <span class="n">ticket_id</span> <span class="o">=</span> <span class="mi">42</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+  <span class="n">pinch</span><span class="p">.</span><span class="nf">ticket</span><span class="p">.</span><span class="nf">accept_intervention</span> <span class="n">ticket_id</span>
+</code></pre>
+
+<blockquote>
+<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
+  </span><span class="p">},{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>When you want to notify the manager that you accepted the intervention, you can use this endpoint.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/accept_intervention</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the ticket whose intervention you want to accept</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+<h2 id="set-an-intervention-date">Set an intervention date</h2>
+<pre class="highlight ruby"><code>  <span class="nb">require</span> <span class="s1">'pinch'</span>
+  <span class="n">ticket_id</span> <span class="o">=</span> <span class="mi">42</span>
+  <span class="n">date</span> <span class="o">=</span> <span class="mi">2</span><span class="p">.</span><span class="nf">months</span><span class="p">.</span><span class="nf">ago</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+  <span class="n">pinch</span><span class="p">.</span><span class="nf">ticket</span><span class="p">.</span><span class="nf">set_intervention_date</span> <span class="n">date</span><span class="p">,</span> <span class="n">ticket_id</span>
+</code></pre>
+
+<blockquote>
+<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
+  </span><span class="p">},{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>To inform the manager and notify the residents of an intervention date, you can use this endpoint.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/set_intervention_date</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the ticket whose intervention date you want to set</td>
+</tr>
+<tr>
+<td>intervention_date</td>
+<td>The date the intervention was done</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+<h2 id="declare-an-intervention-as-done">Declare an intervention as done</h2>
+<pre class="highlight ruby"><code>  <span class="nb">require</span> <span class="s1">'pinch'</span>
+  <span class="n">ticket_id</span> <span class="o">=</span> <span class="mi">42</span>
+  <span class="n">date</span> <span class="o">=</span> <span class="mi">2</span><span class="p">.</span><span class="nf">months</span><span class="p">.</span><span class="nf">ago</span> <span class="c1"># Optional</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+  <span class="n">pinch</span><span class="p">.</span><span class="nf">ticket</span><span class="p">.</span><span class="nf">declare_intervention_done</span> <span class="n">ticket_id</span><span class="p">,</span> <span class="n">date</span>
+</code></pre>
+
+<blockquote>
+<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
+  </span><span class="p">},{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>You should use this endpoint when you have finished an intervention.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/accept_intervention</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the ticket whose intervention you want to accept</td>
+</tr>
+<tr>
+<td>intervention_date</td>
+<td>The date the intervention was done</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  The intervention date can be sent but is optional
+</aside>
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+<h2 id="send-a-message-in-a-ticket">Send a message in a ticket</h2>
+<pre class="highlight ruby"><code>  <span class="nb">require</span> <span class="s1">'pinch'</span>
+  <span class="n">ticket_id</span> <span class="o">=</span> <span class="mi">42</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+  <span class="n">pinch</span><span class="p">.</span><span class="nf">ticket</span><span class="p">.</span><span class="nf">send_message</span> <span class="n">body</span><span class="p">,</span> <span class="n">ticket_id</span>
+</code></pre>
+
+<blockquote>
+<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
+  </span><span class="p">},{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>You can use this endpoint to send a message to the manager of the ticket.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/accept_intervention</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the ticket</td>
+</tr>
+<tr>
+<td>body</td>
+<td>The body of the message</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+<h2 id="upload-a-document">Upload a document</h2>
+<pre class="highlight ruby"><code>  <span class="nb">require</span> <span class="s1">'pinch'</span>
+  <span class="n">ticket_id</span> <span class="o">=</span> <span class="mi">42</span>
+  <span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'my_path.txt'</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+  <span class="n">pinch</span><span class="p">.</span><span class="nf">ticket</span><span class="p">.</span><span class="nf">upload_document</span> <span class="n">file</span><span class="p">,</span> <span class="n">ticket_id</span>
+</code></pre>
+
+<blockquote>
+<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
+  </span><span class="p">},{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint allows you to update any documents that are related to the ticket but are neither quotes, nor invoices, nor pictures.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/upload_document</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the ticket</td>
+</tr>
+<tr>
+<td>file</td>
+<td>The file to upload</td>
+</tr>
+</tbody></table>
+
+<aside class='warning'>You should not upload quotes, invoices or pictures via this endpoint!</aside>
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+<h2 id="upload-a-picture">Upload a picture</h2>
+<pre class="highlight ruby"><code>  <span class="nb">require</span> <span class="s1">'pinch'</span>
+  <span class="n">ticket_id</span> <span class="o">=</span> <span class="mi">42</span>
+  <span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'my_path.txt'</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+  <span class="n">pinch</span><span class="p">.</span><span class="nf">ticket</span><span class="p">.</span><span class="nf">upload_picture</span> <span class="n">file</span><span class="p">,</span> <span class="n">ticket_id</span>
+</code></pre>
+
+<blockquote>
+<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
+  </span><span class="p">},{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>You can upload here any picture related to the ticket (before or after it has been done).</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/upload_picture</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the ticket</td>
+</tr>
+<tr>
+<td>file</td>
+<td>The picture to upload</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+<h2 id="upload-a-quote">Upload a quote</h2>
+<pre class="highlight ruby"><code>  <span class="nb">require</span> <span class="s1">'pinch'</span>
+  <span class="n">ticket_id</span> <span class="o">=</span> <span class="mi">42</span>
+  <span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'my_path.txt'</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+  <span class="n">pinch</span><span class="p">.</span><span class="nf">ticket</span><span class="p">.</span><span class="nf">upload_quote</span> <span class="n">file</span><span class="p">,</span> <span class="n">ticket_id</span>
+</code></pre>
+
+<blockquote>
+<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
+  </span><span class="p">},{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>When being asked for a quote, you can use this endpoint to send your quote.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/upload_quote</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the ticket</td>
+</tr>
+<tr>
+<td>file</td>
+<td>The quote to upload</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
+
+<h2 id="upload-an-invoice">Upload an invoice</h2>
+<pre class="highlight ruby"><code>  <span class="nb">require</span> <span class="s1">'pinch'</span>
+  <span class="n">ticket_id</span> <span class="o">=</span> <span class="mi">42</span>
+  <span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'my_path.txt'</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+  <span class="n">pinch</span><span class="p">.</span><span class="nf">ticket</span><span class="p">.</span><span class="nf">upload_invoice</span> <span class="n">file</span><span class="p">,</span> <span class="n">ticket_id</span>
+</code></pre>
+
+<blockquote>
+<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
+  </span><span class="p">},{</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>When being asked for an invoice, you can use this endpoint to send your invoice.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/upload_invoice</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the ticket</td>
+</tr>
+<tr>
+<td>file</td>
+<td>The invoice to upload</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  Latitude and longitude float numbers may not be accurate.
+</aside>
 
           <h1 id="errors">Errors</h1>
 
@@ -338,9 +1263,14 @@ Remember — a happy kitten is an authenticated kitten!
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="shell">cURL</a>
+                <a href="#" data-language-name="ruby">Ruby</a>
+                <a href="#" data-language-name="python">Python</a>
+                <a href="#" data-language-name="csharp">C#</a>
+                <a href="#" data-language-name="angular">AngularJS</a>
+                <a href="#" data-language-name="node">NodeJS</a>
+                <a href="#" data-language-name="java">Java</a>
+                <a href="#" data-language-name="php">PHP</a>
           </div>
       </div>
     </div>
