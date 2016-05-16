@@ -12,6 +12,12 @@ pinch.webhook.create({
 })
 ```
 
+```python
+  from Pinch.Controllers.WebhookController import *
+  controller = WebhookController()
+  controller.create({'webhook_type': 1, 'url': 'https://example.com/ticket_creation'})
+```
+
 ```shell
 curl -X POST -H "Content-Type: application/json" \
 -H "X-API-EMAIL: g.provider1@yahoo.fr" \
@@ -73,6 +79,12 @@ pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@
 pinch.webhook.list
 ```
 
+```python
+  from Pinch.Controllers.WebhookController import *
+  controller = WebhookController()
+  controller.list()
+```
+
 ```shell
 curl -X GET -H "X-API-EMAIL: g.provider1@yahoo.fr" \
 -H "X-API-TOKEN: MY_API_KEY" \
@@ -123,6 +135,14 @@ This endpoint lets you retrieve every webhooks you've configured.
   pinch.webhook.get(webhook_id)
 ````
 
+```python
+  from Pinch.Controllers.WebhookController import *
+  webhook_id = 42
+  controller = WebhookController()
+  controller.get(42)
+```
+
+
 ```shell
 curl -X GET -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
@@ -169,6 +189,13 @@ This endpoint lets you retrieve a single webhook
   })
 ````
 
+```python
+  from Pinch.Controllers.WebhookController import *
+  controller = WebhookController()
+  controller.update({'webhook_type': 3, 'url': 'https://example.com/test'})
+```
+
+
 ```curl
 curl -X PUT -H "Content-Type: application/json" \
 -H "X-API-EMAIL: myemail@example.com" \
@@ -213,8 +240,16 @@ url | This string has to be a correct url, if not, you will receive an error.
   require 'pinch'
   webhook_id = 42
   pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
-  pinch.webhook.destroy
+  pinch.webhook.destroy webhook_id
 ````
+
+```python
+  from Pinch.Controllers.WebhookController import *
+  webhook_id = 42
+  controller = WebhookController()
+  controller.destroy(webhook_id)
+```
+
 
 ```shell
 curl -X DELETE -H "X-API-EMAIL: myemail@example.com" \

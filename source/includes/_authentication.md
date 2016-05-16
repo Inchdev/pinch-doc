@@ -9,15 +9,17 @@ pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@
 ```
 
 ```python
-import pinch
+from Pinch.Controllers import *
 
-api = pinch.authorize('MY_API_KEY')
+Configuration.x_api_token = 'MY_API_KEY'
+Configuration.x_api_email = 'myemail@example.com'
 ```
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "https://company.inchbase.com/api/v1"
-  -H "Authorization: MY_API_KEY"
+curl "https://company.inchbase.com/api/v1" \
+  -H "X-API-EMAIL: myemail@example.com" \
+  -H "X-API-TOKEN: MY_API_KEY"
 ```
 
 > Make sure to replace `MY_API_KEY` with your API key.

@@ -10,6 +10,13 @@
   pinch.ticket.get ticket_id
 ````
 
+````python
+from Pinch.Controllers.TicketController import *
+ticket_id = 42
+controller = TicketController()
+ticket = controller.get(ticket_id)
+````
+
 ```shell
 curl -X GET -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
@@ -86,6 +93,12 @@ id | The id of the ticket you want to retrieve
   pinch.ticket.list
 ````
 
+```python
+  from Pinch.Controllers.TicketController import *
+  controller = TicketController()
+  list = controller.list()
+```
+
 ```shell
 curl -X GET -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
@@ -158,6 +171,13 @@ This endpoint lets you retrieve the list of all opened tickets you are currently
   pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
   pinch.ticket.accept_intervention ticket_id
 ````
+
+```python
+  from Pinch.Controllers.TicketController import *
+  ticket_id = 42
+  controller = TicketController()
+  controller.accept_intervention(ticket_id)
+```
 
 ```shell
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \
@@ -236,6 +256,15 @@ id | The id of the ticket whose intervention you want to accept
   pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
   pinch.ticket.set_intervention_date date, ticket_id
 ````
+
+```python
+  from Pinch.Controllers.TicketController import *
+  import datetime
+  date = datetime.date.today()
+  ticket_id = 42
+  controller = TicketController()
+  controller.set_intervention_date(date, ticket_id)
+```
 
 ```shell
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \
@@ -319,6 +348,15 @@ intervention_date | The date the intervention was done
   pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
   pinch.ticket.declare_intervention_done ticket_id, date
 ````
+
+```python
+  from Pinch.Controllers.TicketController import *
+  import datetime
+  date = datetime.date.today()
+  ticket_id = 42
+  controller = TicketController()
+  controller.declare_intervention_done(date, ticket_id)
+```
 
 ```shell
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \
@@ -407,6 +445,14 @@ intervention_date | The date the intervention was done
   pinch.ticket.send_message body, ticket_id
 ````
 
+```python
+  from Pinch.Controllers.TicketController import *
+  body = "Salut"
+  ticket_id = 42
+  controller = TicketController()
+  controller.set_intervention_date(body, ticket_id)
+```
+
 ```shell
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
@@ -489,6 +535,14 @@ body | The body of the message
   pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
   pinch.ticket.upload_document file, ticket_id
 ````
+
+```python
+  from Pinch.Controllers.TicketController import *
+  f = open('my_path.txt', 'rb')
+  ticket_id = 42
+  controller = TicketController()
+  controller.upload_document(f, ticket_id)
+```
 
 ```shell
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \
@@ -574,6 +628,14 @@ file | The file to upload
   pinch.ticket.upload_picture file, ticket_id
 ````
 
+```python
+  from Pinch.Controllers.TicketController import *
+  f = open('my_path.txt', 'rb')
+  ticket_id = 42
+  controller = TicketController()
+  controller.upload_picture(f, ticket_id)
+```
+
 ```shell
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
@@ -656,6 +718,14 @@ file | The picture to upload
   pinch.ticket.upload_quote file, ticket_id
 ````
 
+```python
+  from Pinch.Controllers.TicketController import *
+  f = open('my_path.txt', 'rb')
+  ticket_id = 42
+  controller = TicketController()
+  controller.upload_quote(f, ticket_id)
+```
+
 ```shell
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
@@ -736,6 +806,14 @@ file | The quote to upload
   pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
   pinch.ticket.upload_invoice file, ticket_id
 ````
+
+```python
+  from Pinch.Controllers.TicketController import *
+  f = open('my_path.txt', 'rb')
+  ticket_id = 42
+  controller = TicketController()
+  controller.upload_invoice(f, ticket_id)
+```
 
 ```shell
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \

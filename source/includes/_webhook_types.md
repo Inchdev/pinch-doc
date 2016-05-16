@@ -15,10 +15,8 @@ curl -X GET -H "X-API-EMAIL: g.provider1@yahoo.fr" \
 ```
 
 ```python
-  import pinch
-
-  pinch = pinch.authorize('MY_API_KEY')
-  pinch.webhook_types()
+  from Pinch.Controllers.WebhookTypeController import *
+  controller = WebhookTypeController()
+  response = controller.list()
 ```
-
 This methods allows you see what webhooks you can register via the API.
