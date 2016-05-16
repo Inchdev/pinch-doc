@@ -5,10 +5,7 @@ language_tabs:
   - shell: cURL
   - ruby: Ruby
   - python: Python
-  - csharp: C#
   - javascript: NodeJS
-  - java: Java
-  - php: PHP
 
 toc_footers:
   - Contact us for a developer key
