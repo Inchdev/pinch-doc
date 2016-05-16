@@ -6,8 +6,7 @@ language_tabs:
   - ruby: Ruby
   - python: Python
   - csharp: C#
-  - angular: AngularJS
-  - node: NodeJS
+  - javascript: NodeJS
   - java: Java
   - php: PHP
 
@@ -20,6 +19,7 @@ includes:
   - authentication
   - webhook_types
   - webhooks
+  - tickets
   - errors
 
 search: true

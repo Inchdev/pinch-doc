@@ -13,9 +13,24 @@ pinch.webhook.create({
 ```
 
 ```python
-  import Pinch
-  controller = WebhookController()
-  controller.create({'webhook_type': 1, 'url': 'https://example.com/ticket_creation'})
+import Pinch
+controller = WebhookController()
+controller.create({'webhook_type': 1, 'url': 'https://example.com/ticket_creation'})
+```
+
+```javascript
+var pinch = require('pinch-api');
+var fs = require('fs');
+
+pinch.configuration.xAPITOKEN = 'MY_API_KEY';
+pinch.configuration.xAPIEMAIL = 'myemail@example.com';
+
+pinch.WebhookController.create({
+  'webhook_type': 1,
+  'url': 'https://example.com/ticket_creation'
+}, function(error, result){
+  console.log(result);
+});
 ```
 
 ```shell
@@ -85,6 +100,18 @@ pinch.webhook.list
   controller.list()
 ```
 
+```javascript
+var pinch = require('pinch-api');
+var fs = require('fs');
+
+pinch.configuration.xAPITOKEN = 'MY_API_KEY';
+pinch.configuration.xAPIEMAIL = 'myemail@example.com';
+
+pinch.WebhookController.list(function(error, result){
+  console.log(result);
+});
+```
+
 ```shell
 curl -X GET -H "X-API-EMAIL: g.provider1@yahoo.fr" \
 -H "X-API-TOKEN: MY_API_KEY" \
@@ -128,20 +155,33 @@ This endpoint lets you retrieve every webhooks you've configured.
 
 ## Get a webhook
 
-````ruby
+```ruby
   require 'pinch'
   webhook_id = 42
   pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
   pinch.webhook.get(webhook_id)
-````
+```
 
 ```python
   import Pinch
   webhook_id = 42
   controller = WebhookController()
-  controller.get(42)
+  controller.get(webhook_id)
 ```
 
+```javascript
+var pinch = require('pinch-api');
+var fs = require('fs');
+
+pinch.configuration.xAPITOKEN = 'MY_API_KEY';
+pinch.configuration.xAPIEMAIL = 'myemail@example.com';
+
+var webhookId = 42;
+
+pinch.WebhookController.get(webhookId, function(error, result){
+  console.log(result);
+});
+```
 
 ```shell
 curl -X GET -H "X-API-EMAIL: myemail@example.com" \
@@ -192,11 +232,28 @@ This endpoint lets you retrieve a single webhook
 ```python
   import Pinch
   controller = WebhookController()
-  controller.update({'webhook_type': 3, 'url': 'https://example.com/test'})
+  webhook_id = 42;
+  controller.update(webhook_id, {'webhook_type': 3, 'url': 'https://example.com/test'})
 ```
 
+```javascript
+var pinch = require('pinch-api');
+var fs = require('fs');
 
-```curl
+pinch.configuration.xAPITOKEN = 'MY_API_KEY';
+pinch.configuration.xAPIEMAIL = 'myemail@example.com';
+
+var webhookId = 42;
+
+pinch.WebhookController.update(webhookId, {
+  'webhook_type': 3,
+  'url': 'https://example.com/test'
+}, function(error, result){
+  console.log(result);
+});
+```
+
+```shell
 curl -X PUT -H "Content-Type: application/json" \
 -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" -d '{
@@ -248,6 +305,18 @@ url | This string has to be a correct url, if not, you will receive an error.
   webhook_id = 42
   controller = WebhookController()
   controller.destroy(webhook_id)
+```
+
+```javascript
+var pinch = require('pinch-api');
+var fs = require('fs');
+
+pinch.configuration.xAPITOKEN = 'MY_API_KEY';
+pinch.configuration.xAPIEMAIL = 'myemail@example.com';
+var webhookId = 42;
+pinch.WebhookController.destroy(webhookId, function(error, result){
+  console.log(result);
+});
 ```
 
 

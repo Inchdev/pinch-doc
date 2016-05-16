@@ -1,4 +1,3 @@
-
 # Tickets
 
 ## Get a ticket
@@ -16,6 +15,18 @@ ticket_id = 42
 controller = TicketController()
 ticket = controller.get(ticket_id)
 ````
+
+```javascript
+  var pinch = require('pinch-api');
+  
+  pinch.configuration.xAPITOKEN = 'MY_API_KEY';
+  pinch.configuration.xAPIEMAIL = 'myemail@example.com';
+
+  var ticketId = 42;
+  pinch.TicketController.get(ticketId, function(error, result){
+    console.log(result);
+  });
+```
 
 ```shell
 curl -X GET -H "X-API-EMAIL: myemail@example.com" \
@@ -99,6 +110,18 @@ id | The id of the ticket you want to retrieve
   list = controller.list()
 ```
 
+```javascript
+  var pinch = require('pinch-api');
+  
+  pinch.configuration.xAPITOKEN = 'MY_API_KEY';
+  pinch.configuration.xAPIEMAIL = 'myemail@example.com';
+
+  pinch.TicketController.list(function(error, result){
+    console.log(result);
+  });
+```
+
+
 ```shell
 curl -X GET -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
@@ -177,6 +200,18 @@ This endpoint lets you retrieve the list of all opened tickets you are currently
   ticket_id = 42
   controller = TicketController()
   controller.accept_intervention(ticket_id)
+```
+
+```javascript
+  var pinch = require('pinch-api');
+  
+  pinch.configuration.xAPITOKEN = 'MY_API_KEY';
+  pinch.configuration.xAPIEMAIL = 'myemail@example.com';
+
+  var ticketId = 42;
+  pinch.TicketController.acceptIntervention(ticketId, function(error,result){
+    console.log(result);
+  });
 ```
 
 ```shell
@@ -264,6 +299,20 @@ id | The id of the ticket whose intervention you want to accept
   ticket_id = 42
   controller = TicketController()
   controller.set_intervention_date(date, ticket_id)
+```
+
+```javascript
+  var pinch = require('pinch-api');
+  
+  pinch.configuration.xAPITOKEN = 'MY_API_KEY';
+  pinch.configuration.xAPIEMAIL = 'myemail@example.com';
+  
+  var myDate = new Date();
+  var ticketId = 42;
+
+  pinch.TicketController.setInterventionDate(myDate, ticketId, function(error, result){
+    console.log(result);
+  });
 ```
 
 ```shell
@@ -358,6 +407,20 @@ intervention_date | The date the intervention was done
   controller.declare_intervention_done(date, ticket_id)
 ```
 
+```javascript
+  var pinch = require('pinch-api');
+  
+  pinch.configuration.xAPITOKEN = 'MY_API_KEY';
+  pinch.configuration.xAPIEMAIL = 'myemail@example.com';
+  
+  var myDate = new Date();
+  var ticketId = 42;
+
+  pinch.TicketController.declareInterventionDone(myDate, ticketId, function(error, result){
+    console.log(result);
+  });
+```
+
 ```shell
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
@@ -450,7 +513,20 @@ intervention_date | The date the intervention was done
   body = "Salut"
   ticket_id = 42
   controller = TicketController()
-  controller.set_intervention_date(body, ticket_id)
+  controller.send_message(body, ticket_id)
+```
+
+```javascript
+  var pinch = require('pinch-api');
+  
+  pinch.configuration.xAPITOKEN = 'MY_API_KEY';
+  pinch.configuration.xAPIEMAIL = 'myemail@example.com';
+
+  var ticketId = 42;
+
+  pinch.TicketController.sendMessage(ticketId, function(error, result){
+    console.log(result);
+  });
 ```
 
 ```shell
@@ -542,6 +618,22 @@ body | The body of the message
   ticket_id = 42
   controller = TicketController()
   controller.upload_document(f, ticket_id)
+```
+
+```javascript
+  var pinch = require('pinch-api');
+  var fs = require('fs');
+  
+  pinch.configuration.xAPITOKEN = 'MY_API_KEY';
+  pinch.configuration.xAPIEMAIL = 'myemail@example.com';
+
+  var ticketId = 42;
+  
+  fs.readFile('DATA', 'utf8', function(err, contents) {
+    pinch.TicketController.uploadDocument(contents, ticketId, function(error, result){
+      console.log(result);
+    });
+  });
 ```
 
 ```shell
@@ -636,6 +728,22 @@ file | The file to upload
   controller.upload_picture(f, ticket_id)
 ```
 
+```javascript
+  var pinch = require('pinch-api');
+  var fs = require('fs');
+  
+  pinch.configuration.xAPITOKEN = 'MY_API_KEY';
+  pinch.configuration.xAPIEMAIL = 'myemail@example.com';
+
+  var ticketId = 42;
+  
+  fs.readFile('DATA', 'utf8', function(err, contents) {
+    pinch.TicketController.uploadPicture(contents, ticketId, function(error, result){
+      console.log(result);
+    });
+  });
+```
+
 ```shell
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
@@ -726,6 +834,22 @@ file | The picture to upload
   controller.upload_quote(f, ticket_id)
 ```
 
+```javascript
+  var pinch = require('pinch-api');
+  var fs = require('fs');
+  
+  pinch.configuration.xAPITOKEN = 'MY_API_KEY';
+  pinch.configuration.xAPIEMAIL = 'myemail@example.com';
+
+  var ticketId = 42;
+  
+  fs.readFile('DATA', 'utf8', function(err, contents) {
+    pinch.TicketController.uploadQuote(contents, ticketId, function(error, result){
+      console.log(result);
+    });
+  });
+```
+
 ```shell
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
@@ -814,6 +938,23 @@ file | The quote to upload
   controller = TicketController()
   controller.upload_invoice(f, ticket_id)
 ```
+
+```javascript
+  var pinch = require('pinch-api');
+  var fs = require('fs');
+  
+  pinch.configuration.xAPITOKEN = 'MY_API_KEY';
+  pinch.configuration.xAPIEMAIL = 'myemail@example.com';
+
+  var ticketId = 42;
+  
+  fs.readFile('DATA', 'utf8', function(err, contents) {
+    pinch.TicketController.uploadInvoice(contents, ticketId, function(error, result){
+      console.log(result);
+    });
+  });
+```
+
 
 ```shell
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \

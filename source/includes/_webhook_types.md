@@ -19,4 +19,17 @@ curl -X GET -H "X-API-EMAIL: g.provider1@yahoo.fr" \
   controller = WebhookTypeController()
   response = controller.list()
 ```
+
+```javascript
+  var pinch = require('pinch-api');
+  var fs = require('fs');
+  
+  pinch.configuration.xAPITOKEN = 'MY_API_KEY';
+  pinch.configuration.xAPIEMAIL = 'myemail@example.com';
+
+  pinch.WebhookTypeController.list(function(error, result){
+    console.log(result);
+  });
+```
+
 This methods allows you see what webhooks you can register via the API.
