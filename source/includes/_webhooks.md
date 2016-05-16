@@ -13,7 +13,7 @@ pinch.webhook.create({
 ```
 
 ```python
-  from Pinch.Controllers.WebhookController import *
+  import Pinch
   controller = WebhookController()
   controller.create({'webhook_type': 1, 'url': 'https://example.com/ticket_creation'})
 ```
@@ -80,7 +80,7 @@ pinch.webhook.list
 ```
 
 ```python
-  from Pinch.Controllers.WebhookController import *
+  import Pinch
   controller = WebhookController()
   controller.list()
 ```
@@ -136,7 +136,7 @@ This endpoint lets you retrieve every webhooks you've configured.
 ````
 
 ```python
-  from Pinch.Controllers.WebhookController import *
+  import Pinch
   webhook_id = 42
   controller = WebhookController()
   controller.get(42)
@@ -190,7 +190,7 @@ This endpoint lets you retrieve a single webhook
 ````
 
 ```python
-  from Pinch.Controllers.WebhookController import *
+  import Pinch
   controller = WebhookController()
   controller.update({'webhook_type': 3, 'url': 'https://example.com/test'})
 ```
@@ -244,7 +244,7 @@ url | This string has to be a correct url, if not, you will receive an error.
 ````
 
 ```python
-  from Pinch.Controllers.WebhookController import *
+  import Pinch
   webhook_id = 42
   controller = WebhookController()
   controller.destroy(webhook_id)

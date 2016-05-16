@@ -11,7 +11,7 @@
 ````
 
 ````python
-from Pinch.Controllers.TicketController import *
+import Pinch
 ticket_id = 42
 controller = TicketController()
 ticket = controller.get(ticket_id)
@@ -94,7 +94,7 @@ id | The id of the ticket you want to retrieve
 ````
 
 ```python
-  from Pinch.Controllers.TicketController import *
+  import Pinch
   controller = TicketController()
   list = controller.list()
 ```
@@ -173,7 +173,7 @@ This endpoint lets you retrieve the list of all opened tickets you are currently
 ````
 
 ```python
-  from Pinch.Controllers.TicketController import *
+  import Pinch
   ticket_id = 42
   controller = TicketController()
   controller.accept_intervention(ticket_id)
@@ -258,7 +258,7 @@ id | The id of the ticket whose intervention you want to accept
 ````
 
 ```python
-  from Pinch.Controllers.TicketController import *
+  import Pinch
   import datetime
   date = datetime.date.today()
   ticket_id = 42
@@ -350,7 +350,7 @@ intervention_date | The date the intervention was done
 ````
 
 ```python
-  from Pinch.Controllers.TicketController import *
+  import Pinch
   import datetime
   date = datetime.date.today()
   ticket_id = 42
@@ -446,7 +446,7 @@ intervention_date | The date the intervention was done
 ````
 
 ```python
-  from Pinch.Controllers.TicketController import *
+  import Pinch
   body = "Salut"
   ticket_id = 42
   controller = TicketController()
@@ -537,7 +537,7 @@ body | The body of the message
 ````
 
 ```python
-  from Pinch.Controllers.TicketController import *
+  import Pinch
   f = open('my_path.txt', 'rb')
   ticket_id = 42
   controller = TicketController()
@@ -629,7 +629,7 @@ file | The file to upload
 ````
 
 ```python
-  from Pinch.Controllers.TicketController import *
+  import Pinch
   f = open('my_path.txt', 'rb')
   ticket_id = 42
   controller = TicketController()
@@ -719,7 +719,7 @@ file | The picture to upload
 ````
 
 ```python
-  from Pinch.Controllers.TicketController import *
+  import Pinch
   f = open('my_path.txt', 'rb')
   ticket_id = 42
   controller = TicketController()
@@ -808,7 +808,7 @@ file | The quote to upload
 ````
 
 ```python
-  from Pinch.Controllers.TicketController import *
+  import Pinch
   f = open('my_path.txt', 'rb')
   ticket_id = 42
   controller = TicketController()
