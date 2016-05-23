@@ -37,6 +37,7 @@ pinch.WebhookController.create({
 curl -X POST -H "Content-Type: application/json" \
 -H "X-API-EMAIL: g.provider1@yahoo.fr" \
 -H "X-API-TOKEN: MY_API_KEY" \
+-H "Accept: application/json" -H "Content-Type: application/json" \
 -d '{
     "url": "https://example.com/ticket_creation",
     "webhook_type": 1
@@ -115,6 +116,7 @@ pinch.WebhookController.list(function(error, result){
 ```shell
 curl -X GET -H "X-API-EMAIL: g.provider1@yahoo.fr" \
 -H "X-API-TOKEN: MY_API_KEY" \
+-H "Accept: application/json" -H "Content-Type: application/json" \
 "https://api-company.inchbase.com/api/v1/webhooks"
 ```
 
@@ -186,6 +188,7 @@ pinch.WebhookController.get(webhookId, function(error, result){
 ```shell
 curl -X GET -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
+-H "Accept: application/json" -H "Content-Type: application/json" \
 "https://api-company.inchbase.com/api/v1/webhooks/42"
 ```
 
@@ -255,6 +258,7 @@ pinch.WebhookController.update(webhookId, {
 
 ```shell
 curl -X PUT -H "Content-Type: application/json" \
+-H "Accept: application/json" -H "Content-Type: application/json" \
 -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" -d '{
     "webhook": {
@@ -323,6 +327,7 @@ pinch.WebhookController.destroy(webhookId, function(error, result){
 ```shell
 curl -X DELETE -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
+-H "Accept: application/json" -H "Content-Type: application/json" \
 "https://api-company.inchbase.com/api/v1/webhooks/42"
 ```
 

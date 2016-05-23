@@ -31,6 +31,7 @@ ticket = controller.get(ticket_id)
 ```shell
 curl -X GET -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
+-H "Accept: application/json" -H "Content-Type: application/json" \
 "https://api-company.inchbase.com/api/v/1tickets/{{ticket_id}}"
 ```
 
@@ -125,6 +126,7 @@ id | The id of the ticket you want to retrieve
 ```shell
 curl -X GET -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
+-H "Accept: application/json" -H "Content-Type: application/json" \
 "https://api-company.inchbase.com/api/v1/tickets"
 ```
 
@@ -217,6 +219,7 @@ This endpoint lets you retrieve the list of all opened tickets you are currently
 ```shell
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
+-H "Accept: application/json" -H "Content-Type: application/json" \
 "https://api-company.inchbase.com/api/v1/42/accept"
 ```
 
@@ -318,7 +321,7 @@ id | The id of the ticket whose intervention you want to accept
 ```shell
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
--H "Content-Type: application/json" \
+-H "Accept: application/json" -H "Content-Type: application/json" \
 -d '{
     "intervention_date": "2016-05-11T20:03:46.769+02:00"
 }' \
@@ -424,7 +427,7 @@ intervention_date | The date the intervention was done
 ```shell
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
--H "Content-Type: application/json" \
+-H "Accept: application/json" -H "Content-Type: application/json" \
 -d '{
     "intervention_date": "2016-05-11T20:03:46.769+02:00"
 }' \
@@ -532,7 +535,7 @@ intervention_date | The date the intervention was done
 ```shell
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
--H "Content-Type: application/json" \
+-H "Accept: application/json" -H "Content-Type: application/json" \
 -d '{
     "body": "Salut"
 }' \

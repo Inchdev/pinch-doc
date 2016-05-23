@@ -11,6 +11,7 @@
 ```shell
 curl -X GET -H "X-API-EMAIL: g.provider1@yahoo.fr" \
 -H "X-API-TOKEN: MY_API_KEY" \
+-H "Accept: application/json" -H "Content-Type: application/json" \
 "https://api-company.inchbase.com/api/v1/webhook_types"
 ```
 
