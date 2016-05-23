@@ -157,7 +157,8 @@
 <pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
 curl <span class="s2">"https://company.inchbase.com/api/v1"</span> <span class="se">\</span>
   -H <span class="s2">"X-API-EMAIL: myemail@example.com"</span> <span class="se">\</span>
-  -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span>
+  -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span>
 </code></pre>
 
 <blockquote>
@@ -185,6 +186,7 @@ You must replace <code>MY_API_KEY</code> with your personal API key and myemail@
 </code></pre>
 <pre class="highlight shell"><code>curl -X GET -H <span class="s2">"X-API-EMAIL: g.provider1@yahoo.fr"</span> <span class="se">\</span>
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 <span class="s2">"https://api-company.inchbase.com/api/v1/webhook_types"</span>
 </code></pre>
 <pre class="highlight python"><code>  <span class="kn">import</span> <span class="nn">Pinch</span>
@@ -235,6 +237,7 @@ You must replace <code>MY_API_KEY</code> with your personal API key and myemail@
 <pre class="highlight shell"><code>curl -X POST -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -H <span class="s2">"X-API-EMAIL: g.provider1@yahoo.fr"</span> <span class="se">\</span>
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -d <span class="s1">'{
     "url": "https://example.com/ticket_creation",
     "webhook_type": 1
@@ -314,6 +317,7 @@ Remember — You can define several webhooks, update or delete them!
 </code></pre>
 <pre class="highlight shell"><code>curl -X GET -H <span class="s2">"X-API-EMAIL: g.provider1@yahoo.fr"</span> <span class="se">\</span>
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 <span class="s2">"https://api-company.inchbase.com/api/v1/webhooks"</span>
 </code></pre>
 
@@ -376,6 +380,7 @@ Remember — You can define several webhooks, update or delete them!
 </code></pre>
 <pre class="highlight shell"><code>curl -X GET -H <span class="s2">"X-API-EMAIL: myemail@example.com"</span> <span class="se">\</span>
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 <span class="s2">"https://api-company.inchbase.com/api/v1/webhooks/42"</span>
 </code></pre>
 
@@ -437,6 +442,7 @@ Remember — You can define several webhooks, update or delete them!
 <span class="p">});</span>
 </code></pre>
 <pre class="highlight shell"><code>curl -X PUT -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -H <span class="s2">"X-API-EMAIL: myemail@example.com"</span> <span class="se">\</span>
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> -d <span class="s1">'{
     "webhook": {
@@ -509,6 +515,7 @@ Remember — You can define several webhooks, update or delete them!
 </code></pre>
 <pre class="highlight shell"><code>curl -X DELETE -H <span class="s2">"X-API-EMAIL: myemail@example.com"</span> <span class="se">\</span>
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 <span class="s2">"https://api-company.inchbase.com/api/v1/webhooks/42"</span>
 </code></pre>
 
@@ -565,6 +572,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 </code></pre>
 <pre class="highlight shell"><code>curl -X GET -H <span class="s2">"X-API-EMAIL: myemail@example.com"</span> <span class="se">\</span>
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 <span class="s2">"https://api-company.inchbase.com/api/v/1tickets/{{ticket_id}}"</span>
 </code></pre>
 
@@ -658,6 +666,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 </code></pre>
 <pre class="highlight shell"><code>curl -X GET -H <span class="s2">"X-API-EMAIL: myemail@example.com"</span> <span class="se">\</span>
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 <span class="s2">"https://api-company.inchbase.com/api/v1/tickets"</span>
 </code></pre>
 
@@ -742,6 +751,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 </code></pre>
 <pre class="highlight shell"><code>curl -X POST -H <span class="s2">"X-API-EMAIL: myemail@example.com"</span> <span class="se">\</span>
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 <span class="s2">"https://api-company.inchbase.com/api/v1/42/accept"</span>
 </code></pre>
 
@@ -843,7 +853,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 </code></pre>
 <pre class="highlight shell"><code>curl -X POST -H <span class="s2">"X-API-EMAIL: myemail@example.com"</span> <span class="se">\</span>
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
--H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -d <span class="s1">'{
     "intervention_date": "2016-05-11T20:03:46.769+02:00"
 }'</span> <span class="se">\</span>
@@ -952,7 +962,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 </code></pre>
 <pre class="highlight shell"><code>curl -X POST -H <span class="s2">"X-API-EMAIL: myemail@example.com"</span> <span class="se">\</span>
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
--H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -d <span class="s1">'{
     "intervention_date": "2016-05-11T20:03:46.769+02:00"
 }'</span> <span class="se">\</span>
@@ -1063,7 +1073,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 </code></pre>
 <pre class="highlight shell"><code>curl -X POST -H <span class="s2">"X-API-EMAIL: myemail@example.com"</span> <span class="se">\</span>
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
--H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -d <span class="s1">'{
     "body": "Salut"
 }'</span> <span class="se">\</span>
