@@ -16,7 +16,7 @@ curl -X GET -H "X-API-EMAIL: g.provider1@yahoo.fr" \
 ```
 
 ```python
-  import Pinch
+  from Pinch import *
   controller = WebhookTypeController()
   response = controller.list()
 ```

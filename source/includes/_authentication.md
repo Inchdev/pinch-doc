@@ -9,7 +9,7 @@ pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@
 ```
 
 ```python
-import Pinch
+from Pinch import *
 
 Configuration.x_api_token = 'MY_API_KEY'
 Configuration.x_api_email = 'myemail@example.com'
