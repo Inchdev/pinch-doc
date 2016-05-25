@@ -33,4 +33,29 @@ curl -X GET -H "X-API-EMAIL: g.provider1@yahoo.fr" \
   });
 ```
 
+```java
+import java.util.List;
+
+import com.inchbase.pinch.PinchClient;
+import com.inchbase.pinch.models.WebhookType;
+
+public class Test {
+
+	public static void main(String[] args) {
+		String apiKey = "MY_API_KEY";
+		String apiEmail = "myemail@example.com";
+		PinchClient client = new PinchClient(apiKey, apiEmail);
+		try {
+			List<WebhookType> webhookTypes = client.getWebhookType().list();
+			for(WebhookType webhookType : webhookTypes){
+				System.out.println(webhookType.getName());
+			}
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+	}
+
+}
+```
+
 This methods allows you see what webhooks you can register via the API.

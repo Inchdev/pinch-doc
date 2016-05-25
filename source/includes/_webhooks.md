@@ -35,13 +35,39 @@ pinch.WebhookController.create({
 
 ```shell
 curl -X POST -H "Content-Type: application/json" \
--H "X-API-EMAIL: g.provider1@yahoo.fr" \
+-H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
 -H "Accept: application/json" -H "Content-Type: application/json" \
 -d '{
     "url": "https://example.com/ticket_creation",
     "webhook_type": 1
 }' "https://api-company.inchbase.com/api/v1/webhooks"
+```
+
+```java
+import com.inchbase.pinch.PinchClient;
+import com.inchbase.pinch.models.Webhook;
+import com.inchbase.pinch.models.WebhookBuilder;
+
+public class Test {
+
+  public static void main(String[] args) {
+    String apiKey = "MY_API_KEY";
+    String apiEmail = "myemail@example.com";
+    PinchClient client = new PinchClient(apiKey, apiEmail);
+    try {
+      String url = "https://example.com/ticket_creation";
+      int webhookType = 1;
+      Webhook webhook = new WebhookBuilder().
+        url(url).webhookType(webhookType).
+        build();
+      webhook = client.getWebhook().create(webhook);
+      System.out.println(webhook.getId());
+    } catch (Throwable e) {
+      e.printStackTrace();
+    }
+  }
+}
 ```
 
 
@@ -114,10 +140,33 @@ pinch.WebhookController.list(function(error, result){
 ```
 
 ```shell
-curl -X GET -H "X-API-EMAIL: g.provider1@yahoo.fr" \
+curl -X GET -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
 -H "Accept: application/json" -H "Content-Type: application/json" \
 "https://api-company.inchbase.com/api/v1/webhooks"
+```
+
+```java
+import java.util.List;
+import com.inchbase.pinch.PinchClient;
+import com.inchbase.pinch.models.Webhook;
+
+public class Test {
+
+  public static void main(String[] args) {
+    String apiKey = "MY_API_KEY";
+    String apiEmail = "myemail@example.com";
+    PinchClient client = new PinchClient(apiKey, apiEmail);
+    try {
+      List<Webhook> webhooks= client.getWebhook().list();
+      for(Webhook webhook: webhooks){
+        System.out.println(webhook.getUrl());
+      }
+    } catch (Throwable e) {
+      e.printStackTrace();
+    }
+  }
+}
 ```
 
 > If the parameters are correct, the above command returns JSON structured like this:
@@ -190,6 +239,27 @@ curl -X GET -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
 -H "Accept: application/json" -H "Content-Type: application/json" \
 "https://api-company.inchbase.com/api/v1/webhooks/42"
+```
+
+```java
+import com.inchbase.pinch.PinchClient;
+import com.inchbase.pinch.models.Webhook;
+
+public class Test {
+
+  public static void main(String[] args) {
+    String apiKey = "MY_API_KEY";
+    String apiEmail = "myemail@example.com";
+    PinchClient client = new PinchClient(apiKey, apiEmail);
+    try {
+      String webhookId = "42";
+      Webhook webhook = client.getWebhook().get(webhookId);
+      System.out.println(webhook.getId());
+    } catch (Throwable e) {
+      e.printStackTrace();
+    }
+  }
+}
 ```
 
 > If the parameters are correct, the above command returns JSON structured like this:
@@ -268,6 +338,28 @@ curl -X PUT -H "Content-Type: application/json" \
 }' "https://api-company.inchbase.com/api/v1/webhooks/42"
 ```
 
+```java
+import com.inchbase.pinch.PinchClient;
+import com.inchbase.pinch.models.Webhook;
+
+public class Test {
+
+  public static void main(String[] args) {
+    String apiKey = "MY_API_KEY";
+    String apiEmail = "myemail@example.com";
+    PinchClient client = new PinchClient(apiKey, apiEmail);
+    try {
+      String webhookId = "42";
+      Webhook webhook =  client.getWebhook().get(webhookId);
+      webhook.setWebhookType(3);
+      webhook.setUrl("https://example.com/test");
+      client.getWebhook().update(webhook.getId(), webhook);
+    } catch (Throwable e) {
+      e.printStackTrace();
+    }
+  }
+}
+```
 
 > If the parameters are correct, the above command returns JSON structured like this:
 
@@ -329,6 +421,25 @@ curl -X DELETE -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
 -H "Accept: application/json" -H "Content-Type: application/json" \
 "https://api-company.inchbase.com/api/v1/webhooks/42"
+```
+
+```java
+import com.inchbase.pinch.PinchClient;
+
+public class Test {
+
+  public static void main(String[] args) {
+    String apiKey = "T_8FyZfXN9tX4zfj3ZHyIQ";
+    String apiEmail = "g.provider1@yahoo.fr";
+    PinchClient client = new PinchClient(apiKey, apiEmail);
+    try {
+      int webhookId = 42;
+      client.getWebhook().destroy(webhookId);
+    } catch (Throwable e) {
+      e.printStackTrace();
+    }
+  }
+}
 ```
 
 > This query returns an empty answer

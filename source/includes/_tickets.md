@@ -32,7 +32,27 @@ ticket = controller.get(ticket_id)
 curl -X GET -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
 -H "Accept: application/json" -H "Content-Type: application/json" \
-"https://api-company.inchbase.com/api/v/1tickets/{{ticket_id}}"
+"https://api-company.inchbase.com/api/v1/tickets/{{ticket_id}}"
+```
+
+```java
+import com.inchbase.pinch.PinchClient;
+import com.inchbase.pinch.models.Ticket;
+
+public class Test {
+	public static void main(String[] args) {
+		String apiKey = "MY_API_KEY";
+		String apiEmail = "myemail@example.com";
+		PinchClient client = new PinchClient(apiKey, apiEmail);
+		try {
+			String ticketId = "DEM-42";
+			Ticket ticket = client.getTicket().get(ticketId);
+			System.out.println(ticket.getName());
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+	}
+}
 ```
 
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
@@ -130,6 +150,28 @@ curl -X GET -H "X-API-EMAIL: myemail@example.com" \
 "https://api-company.inchbase.com/api/v1/tickets"
 ```
 
+```java
+import java.util.List;
+import com.inchbase.pinch.PinchClient;
+import com.inchbase.pinch.models.Ticket;
+
+public class Test {
+	public static void main(String[] args) {
+		String apiKey = "MY_API_KEY";
+		String apiEmail = "myemail@example.com";
+		PinchClient client = new PinchClient(apiKey, apiEmail);
+		try {
+			List<Ticket> tickets = client.getTicket().list();
+      for(Ticket ticket : tickets){
+        System.out.println(ticket.getName());
+      }
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+	}
+}
+```
+
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
 ````json
@@ -221,6 +263,27 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
 -H "Accept: application/json" -H "Content-Type: application/json" \
 "https://api-company.inchbase.com/api/v1/42/accept"
+```
+
+```java
+import java.util.List;
+
+import com.inchbase.pinch.PinchClient;
+import com.inchbase.pinch.models.Ticket;
+
+public class Test {
+	public static void main(String[] args) {
+		String apiKey = "MY_API_KEY";
+		String apiEmail = "myemail@example.com";
+		PinchClient client = new PinchClient(apiKey, apiEmail);
+		try {
+			String ticketId = "DEM-42";
+			client.getTicket().acceptIntervention(ticketId);
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+	}
+}
 ```
 
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
@@ -328,6 +391,29 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 "https://api-company.inchbase.com/tickets/42/set_intervention_date"
 ```
 
+```java
+import java.util.Date;
+import java.util.List;
+
+import com.inchbase.pinch.PinchClient;
+import com.inchbase.pinch.models.Ticket;
+
+public class Test {
+	public static void main(String[] args) {
+		String apiKey = "MY_API_KEY";
+		String apiEmail = "myemail@example.com";
+		PinchClient client = new PinchClient(apiKey, apiEmail);
+		try {
+			String ticketId = "DEM-42";
+      Date interventionDate = new Date();
+			client.getTicket().setInterventionDate(interventionDate, ticketId);
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+	}
+}
+```
+
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
 ````json
@@ -432,6 +518,28 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
     "intervention_date": "2016-05-11T20:03:46.769+02:00"
 }' \
 "https://api-company.inchbase.com/tickets/42/declare_intervention_done"
+```
+
+```java
+import java.util.Date;
+import java.util.List;
+
+import com.inchbase.pinch.PinchClient;
+
+public class Test {
+	public static void main(String[] args) {
+		String apiKey = "MY_API_KEY";
+		String apiEmail = "myemail@example.com";
+		PinchClient client = new PinchClient(apiKey, apiEmail);
+		try {
+			String ticketId = "DEM-42";
+      Date interventionDate = new Date();
+			client.getTicket().declareInterventionDone(ticketId, interventionDate);
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+	}
+}
 ```
 
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
@@ -542,6 +650,25 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 "https://api-company.inchbase.com/api/v1/tickets/42/message"
 ```
 
+```java
+import com.inchbase.pinch.PinchClient;
+
+public class Test {
+	public static void main(String[] args) {
+		String apiKey = "MY_API_KEY";
+		String apiEmail = "myemail@example.com";
+		PinchClient client = new PinchClient(apiKey, apiEmail);
+		try {
+			String ticketId = "DEM-42";
+			String body = "Hello !";
+			client.getTicket().sendMessage(body, ticketId);
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+	}
+}
+```
+
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
 ````json
@@ -645,6 +772,26 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" \
 -F "file=@my_path.txt" \
 "https://api-company.inchbase.com/api/v1/tickets/42/document_upload"
+```
+
+```java
+import java.io.File;
+import com.inchbase.pinch.PinchClient;
+
+public class Test {
+	public static void main(String[] args) {
+		String apiKey = "MY_API_KEY";
+		String apiEmail = "myemail@example.com";
+		PinchClient client = new PinchClient(apiKey, apiEmail);
+		try {
+			String ticketId = "DEM-42";
+			File file = new File("my_path.txt");
+			client.getTicket().uploadDocument(file , ticketId);
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+	}
+}
 ```
 
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
@@ -755,6 +902,26 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 "https://api-company.inchbase.com/api/v1/tickets/42/picture_upload"
 ```
 
+```java
+import java.io.File;
+import com.inchbase.pinch.PinchClient;
+
+public class Test {
+	public static void main(String[] args) {
+		String apiKey = "MY_API_KEY";
+		String apiEmail = "myemail@example.com";
+		PinchClient client = new PinchClient(apiKey, apiEmail);
+		try {
+			String ticketId = "DEM-42";
+			File file = new File("my_path.txt");
+			client.getTicket().uploadPicture(file , ticketId);
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+	}
+}
+```
+
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
 ````json
@@ -859,6 +1026,26 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" \
 -F "file=@my_path.txt" \
 "https://api-company.inchbase.com/api/v1/tickets/42/quote_upload"
+```
+
+```java
+import java.io.File;
+import com.inchbase.pinch.PinchClient;
+
+public class Test {
+	public static void main(String[] args) {
+		String apiKey = "MY_API_KEY";
+		String apiEmail = "myemail@example.com";
+		PinchClient client = new PinchClient(apiKey, apiEmail);
+		try {
+			String ticketId = "DEM-42";
+			File file = new File("my_path.txt");
+			client.getTicket().uploadQuote(file , ticketId);
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+	}
+}
 ```
 
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:

@@ -30,6 +30,19 @@ curl "https://company.inchbase.com/api/v1" \
   -H "Accept: application/json" -H "Content-Type: application/json"
 ```
 
+```java
+import java.util.List;
+import com.inchbase.pinch.PinchClient;
+
+public class Test {
+	public static void main(String[] args) {
+		String apiKey = "MY_API_KEY";
+		String apiEmail = "myemail@example.com";
+		PinchClient client = new PinchClient(apiKey, apiEmail);
+	}
+}
+```
+
 > Make sure to replace `MY_API_KEY` with your API key.
 
 Pinch uses API keys to allow access to the API. You can register a new Pinch API key by contacting us.

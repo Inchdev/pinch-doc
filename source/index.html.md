@@ -6,6 +6,7 @@ language_tabs:
   - ruby: Ruby
   - python: Python
   - javascript: NodeJS
+  - java: Java
 
 toc_footers:
   - Contact us for a developer key
