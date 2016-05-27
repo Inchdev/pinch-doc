@@ -91,7 +91,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;,&quot;java&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;,&quot;java&quot;,&quot;cs&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -106,6 +106,7 @@
               <a href="#" data-language-name="python">Python</a>
               <a href="#" data-language-name="javascript">NodeJS</a>
               <a href="#" data-language-name="java">Java</a>
+              <a href="#" data-language-name="cs">C#</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -135,6 +136,7 @@
 <li>Python : <a href="https://github.com/Inchdev/pinch-python">https://github.com/Inchdev/pinch-python</a></li>
 <li>NodeJS : <a href="https://github.com/Inchdev/pinch-node">https://github.com/Inchdev/pinch-node</a></li>
 <li>Java : <a href="https://github.com/Inchdev/pinch-java">https://github.com/Inchdev/pinch-java</a></li>
+<li>C# / Csharp : <a href="https://github.com/Inchdev/pinch-csharp">https://github.com/Inchdev/pinch-csharp</a></li>
 </ul>
 
           <h1 id="authentication">Authentication</h1>
@@ -172,6 +174,24 @@ curl <span class="s2">"https://company.inchbase.com/api/v1"</span> <span class="
         <span class="n">PinchClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PinchClient</span><span class="o">(</span><span class="n">apiKey</span><span class="o">,</span> <span class="n">apiEmail</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
+</code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyNamespace</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">MyProgram</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
 
 <blockquote>
@@ -239,6 +259,31 @@ You must replace <code>MY_API_KEY</code> with your personal API key and myemail@
 
 <span class="o">}</span>
 </code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+
+            <span class="n">var</span> <span class="n">webhookTypes</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="n">WebhookType</span><span class="p">.</span><span class="nf">List</span><span class="p">();</span>
+            <span class="k">foreach</span><span class="p">(</span><span class="n">var</span> <span class="n">webhookType</span> <span class="k">in</span> <span class="n">webhookTypes</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">webhookType</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">Console</span><span class="p">.</span><span class="nf">ReadLine</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
 <p>This methods allows you see what webhooks you can register via the API.</p>
 
@@ -302,6 +347,28 @@ You must replace <code>MY_API_KEY</code> with your personal API key and myemail@
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
+</code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch.Models</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+
+            <span class="n">var</span> <span class="n">webhook</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Webhook</span><span class="p">();</span>
+            <span class="n">webhook</span><span class="p">.</span><span class="n">Url</span> <span class="p">=</span> <span class="s">"https://example.com/ticket_creation"</span><span class="p">;</span>
+            <span class="n">webhook</span><span class="p">.</span><span class="n">WebhookType</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+            <span class="n">client</span><span class="p">.</span><span class="n">Webhook</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="n">webhook</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
 
 <blockquote>
@@ -401,6 +468,30 @@ Remember — You can define several webhooks, update or delete them!
   <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch.Models</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+
+            <span class="n">var</span> <span class="n">webhooks</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Webhook</span><span class="p">.</span><span class="nf">List</span><span class="p">();</span>
+            <span class="k">foreach</span><span class="p">(</span><span class="n">var</span> <span class="n">webhook</span> <span class="k">in</span> <span class="n">webhooks</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">webhook</span><span class="p">.</span><span class="n">Url</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">Console</span><span class="p">.</span><span class="nf">ReadLine</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
 <blockquote>
 <p>If the parameters are correct, the above command returns JSON structured like this:</p>
@@ -482,6 +573,27 @@ Remember — You can define several webhooks, update or delete them!
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
+</code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+
+            <span class="n">String</span> <span class="n">webhookId</span> <span class="p">=</span> <span class="s">"42"</span><span class="p">;</span>
+            <span class="n">var</span> <span class="n">webhook</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Webhook</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="n">webhookId</span><span class="p">);</span>
+            <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">webhook</span><span class="p">.</span><span class="n">Url</span><span class="p">);</span>
+            <span class="n">Console</span><span class="p">.</span><span class="nf">ReadLine</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
 
 <blockquote>
@@ -572,6 +684,29 @@ Remember — You can define several webhooks, update or delete them!
   <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+
+            <span class="n">String</span> <span class="n">webhookId</span> <span class="p">=</span> <span class="s">"42"</span><span class="p">;</span>
+            <span class="n">var</span> <span class="n">webhookController</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Webhook</span><span class="p">;</span>
+            <span class="n">var</span> <span class="n">webhook</span> <span class="p">=</span> <span class="n">webhookController</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="n">webhookId</span><span class="p">);</span>
+            <span class="n">webhook</span><span class="p">.</span><span class="n">Url</span> <span class="p">=</span> <span class="s">"https://example.com/test"</span><span class="p">;</span>
+            <span class="n">webhook</span><span class="p">.</span><span class="n">WebhookType</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>
+            <span class="n">webhookController</span><span class="p">.</span><span class="nf">Update</span><span class="p">(</span><span class="n">webhook</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span> <span class="n">webhook</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
 <blockquote>
 <p>If the parameters are correct, the above command returns JSON structured like this:</p>
@@ -644,8 +779,8 @@ Remember — You can define several webhooks, update or delete them!
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
 
   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-    <span class="n">String</span> <span class="n">apiKey</span> <span class="o">=</span> <span class="s">"T_8FyZfXN9tX4zfj3ZHyIQ"</span><span class="o">;</span>
-    <span class="n">String</span> <span class="n">apiEmail</span> <span class="o">=</span> <span class="s">"g.provider1@yahoo.fr"</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">apiKey</span> <span class="o">=</span> <span class="s">"MY_API_KEY"</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">apiEmail</span> <span class="o">=</span> <span class="s">"myemail@example.com"</span><span class="o">;</span>
     <span class="n">PinchClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PinchClient</span><span class="o">(</span><span class="n">apiKey</span><span class="o">,</span> <span class="n">apiEmail</span><span class="o">);</span>
     <span class="k">try</span> <span class="o">{</span>
       <span class="kt">int</span> <span class="n">webhookId</span> <span class="o">=</span> <span class="mi">42</span><span class="o">;</span>
@@ -655,6 +790,25 @@ Remember — You can define several webhooks, update or delete them!
     <span class="o">}</span>
   <span class="o">}</span>
 <span class="o">}</span>
+</code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+
+            <span class="n">String</span> <span class="n">webhookId</span> <span class="p">=</span> <span class="s">"42"</span><span class="p">;</span>
+            <span class="n">var</span> <span class="n">webhookController</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Webhook</span><span class="p">.</span><span class="nf">Destroy</span><span class="p">(</span><span class="n">webhookId</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
 
 <blockquote>
@@ -730,6 +884,28 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
         <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
+</code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+            <span class="n">String</span> <span class="n">ticketId</span> <span class="p">=</span> <span class="s">"42"</span><span class="p">;</span>
+            <span class="n">var</span> <span class="n">ticket</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Ticket</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="n">ticketId</span><span class="p">);</span>
+            <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">ticket</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+            <span class="n">Console</span><span class="p">.</span><span class="nf">ReadLine</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
 
 <blockquote>
@@ -845,6 +1021,29 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+            <span class="n">var</span> <span class="n">tickets</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Ticket</span><span class="p">.</span><span class="nf">List</span><span class="p">();</span>
+            <span class="k">foreach</span><span class="p">(</span><span class="n">var</span> <span class="n">ticket</span> <span class="k">in</span> <span class="n">tickets</span><span class="p">){</span>
+              <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">ticket</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">Console</span><span class="p">.</span><span class="nf">ReadLine</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
 <blockquote>
 <p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
@@ -948,6 +1147,26 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
         <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
+</code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+            <span class="n">String</span> <span class="n">ticketId</span> <span class="p">=</span> <span class="s">"DEM-42"</span><span class="p">;</span> 
+            <span class="n">client</span><span class="p">.</span><span class="n">Ticket</span><span class="p">.</span><span class="nf">AcceptIntervention</span><span class="p">(</span><span class="n">ticketId</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
 
 <blockquote>
@@ -1074,6 +1293,27 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
         <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
+</code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+            <span class="n">String</span> <span class="n">ticketId</span> <span class="p">=</span> <span class="s">"DEM-42"</span><span class="p">;</span>
+            <span class="n">DateTime</span> <span class="n">date</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">DateTime</span><span class="p">();</span>
+            <span class="n">client</span><span class="p">.</span><span class="n">Ticket</span><span class="p">.</span><span class="nf">SetInterventionDate</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">ticketId</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
 
 <blockquote>
@@ -1204,6 +1444,27 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+            <span class="n">String</span> <span class="n">ticketId</span> <span class="p">=</span> <span class="s">"DEM-42"</span><span class="p">;</span>
+            <span class="n">DateTime</span> <span class="n">date</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">DateTime</span><span class="p">();</span>
+            <span class="n">client</span><span class="p">.</span><span class="n">Ticket</span><span class="p">.</span><span class="nf">DeclareInterventionDone</span><span class="p">(</span><span class="n">ticketId</span><span class="p">,</span> <span class="n">date</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
 <blockquote>
 <p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
@@ -1332,6 +1593,27 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+            <span class="n">String</span> <span class="n">ticketId</span> <span class="p">=</span> <span class="s">"DEM-42"</span><span class="p">;</span>
+            <span class="n">String</span> <span class="n">body</span> <span class="p">=</span> <span class="s">"Hello !"</span><span class="p">;</span>
+            <span class="n">client</span><span class="p">.</span><span class="n">Ticket</span><span class="p">.</span><span class="nf">SendMessage</span><span class="p">(</span><span class="n">ticketId</span><span class="p">,</span> <span class="n">body</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
 <blockquote>
 <p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
@@ -1457,6 +1739,30 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
         <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
+</code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+            <span class="n">String</span> <span class="n">ticketId</span> <span class="p">=</span> <span class="s">"DEM-42"</span><span class="p">;</span>
+
+            <span class="n">var</span> <span class="n">file</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="nf">OpenRead</span><span class="p">(</span><span class="s">"my_path.txt"</span><span class="p">);</span>
+            <span class="n">var</span> <span class="n">stream</span> <span class="p">=</span> <span class="k">new</span> <span class="n">pinch</span><span class="p">.</span><span class="n">Http</span><span class="p">.</span><span class="n">Client</span><span class="p">.</span><span class="nf">FileStreamInfo</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+
+            <span class="n">client</span><span class="p">.</span><span class="n">Ticket</span><span class="p">.</span><span class="nf">UploadDocument</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">ticketId</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
 
 <blockquote>
@@ -1586,6 +1892,30 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+            <span class="n">String</span> <span class="n">ticketId</span> <span class="p">=</span> <span class="s">"DEM-42"</span><span class="p">;</span>
+
+            <span class="n">var</span> <span class="n">file</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="nf">OpenRead</span><span class="p">(</span><span class="s">"my_path.txt"</span><span class="p">);</span>
+            <span class="n">var</span> <span class="n">stream</span> <span class="p">=</span> <span class="k">new</span> <span class="n">pinch</span><span class="p">.</span><span class="n">Http</span><span class="p">.</span><span class="n">Client</span><span class="p">.</span><span class="nf">FileStreamInfo</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+
+            <span class="n">client</span><span class="p">.</span><span class="n">Ticket</span><span class="p">.</span><span class="nf">uploadPicture</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">ticketId</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
 <blockquote>
 <p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
@@ -1712,6 +2042,30 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+            <span class="n">String</span> <span class="n">ticketId</span> <span class="p">=</span> <span class="s">"DEM-42"</span><span class="p">;</span>
+
+            <span class="n">var</span> <span class="n">file</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="nf">OpenRead</span><span class="p">(</span><span class="s">"my_path.txt"</span><span class="p">);</span>
+            <span class="n">var</span> <span class="n">stream</span> <span class="p">=</span> <span class="k">new</span> <span class="n">pinch</span><span class="p">.</span><span class="n">Http</span><span class="p">.</span><span class="n">Client</span><span class="p">.</span><span class="nf">FileStreamInfo</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+
+            <span class="n">client</span><span class="p">.</span><span class="n">Ticket</span><span class="p">.</span><span class="nf">uploadQuote</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">ticketId</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
 <blockquote>
 <p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
@@ -1819,6 +2173,30 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 -H <span class="s2">"Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"</span> <span class="se">\</span>
 -F <span class="s2">"file=@my_path.txt"</span> <span class="se">\</span>
 <span class="s2">"https://api-company.inchbase.com/api/v1/tickets/42/invoice_upload"</span>
+</code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+            <span class="n">String</span> <span class="n">ticketId</span> <span class="p">=</span> <span class="s">"DEM-42"</span><span class="p">;</span>
+
+            <span class="n">var</span> <span class="n">file</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="nf">OpenRead</span><span class="p">(</span><span class="s">"my_path.txt"</span><span class="p">);</span>
+            <span class="n">var</span> <span class="n">stream</span> <span class="p">=</span> <span class="k">new</span> <span class="n">pinch</span><span class="p">.</span><span class="n">Http</span><span class="p">.</span><span class="n">Client</span><span class="p">.</span><span class="nf">FileStreamInfo</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+
+            <span class="n">client</span><span class="p">.</span><span class="n">Ticket</span><span class="p">.</span><span class="nf">uploadInvoice</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">ticketId</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
 
 <blockquote>
@@ -1939,6 +2317,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
                 <a href="#" data-language-name="python">Python</a>
                 <a href="#" data-language-name="javascript">NodeJS</a>
                 <a href="#" data-language-name="java">Java</a>
+                <a href="#" data-language-name="cs">C#</a>
           </div>
       </div>
     </div>
