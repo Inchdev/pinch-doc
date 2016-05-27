@@ -554,7 +554,7 @@ namespace ConsoleApplication1
         {
             client = new PinchClient("MY_API_KEY", "myemail@example.com");
 
-            String webhookId = "42";
+            int webhookId = 42;
             var webhookController = client.Webhook.Destroy(webhookId);
         }
     }
