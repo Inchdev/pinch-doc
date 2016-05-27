@@ -55,6 +55,30 @@ public class Test {
 }
 ```
 
+````cs
+using System;
+...
+using System.Threading.Tasks;
+using pinch;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+            String ticketId = "42";
+            var ticket = client.Ticket.Get(ticketId);
+            Console.WriteLine(ticket.Name);
+            Console.ReadLine();
+        }
+    }
+}
+```
+
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
 ````json
@@ -172,6 +196,31 @@ public class Test {
 }
 ```
 
+```cs
+using System;
+...
+using System.Threading.Tasks;
+using pinch;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+            var tickets = client.Ticket.List();
+            foreach(var ticket in tickets){
+              Console.WriteLine(ticket.Name);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+```
+
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
 ````json
@@ -283,6 +332,29 @@ public class Test {
 			e.printStackTrace();
 		}
 	}
+}
+```
+
+
+```cs
+using System;
+...
+using System.Threading.Tasks;
+using pinch;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+            String ticketId = "DEM-42"; 
+            client.Ticket.AcceptIntervention(ticketId);
+        }
+    }
 }
 ```
 
@@ -414,6 +486,29 @@ public class Test {
 }
 ```
 
+```cs
+using System;
+...
+using System.Threading.Tasks;
+using pinch;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+            String ticketId = "DEM-42";
+            DateTime date = new DateTime();
+            client.Ticket.SetInterventionDate(date, ticketId);
+        }
+    }
+}
+```
+
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
 ````json
@@ -539,6 +634,29 @@ public class Test {
 			e.printStackTrace();
 		}
 	}
+}
+```
+
+```cs
+using System;
+...
+using System.Threading.Tasks;
+using pinch;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+            String ticketId = "DEM-42";
+            DateTime date = new DateTime();
+            client.Ticket.DeclareInterventionDone(ticketId, date);
+        }
+    }
 }
 ```
 
@@ -669,6 +787,29 @@ public class Test {
 }
 ```
 
+```cs
+using System;
+...
+using System.Threading.Tasks;
+using pinch;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+            String ticketId = "DEM-42";
+            String body = "Hello !";
+            client.Ticket.SendMessage(ticketId, body);
+        }
+    }
+}
+```
+
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
 ````json
@@ -791,6 +932,32 @@ public class Test {
 			e.printStackTrace();
 		}
 	}
+}
+```
+
+```cs
+using System;
+...
+using System.Threading.Tasks;
+using pinch;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+            String ticketId = "DEM-42";
+
+            var file = System.IO.File.OpenRead("my_path.txt");
+            var stream = new pinch.Http.Client.FileStreamInfo(file);
+
+            client.Ticket.UploadDocument(stream, ticketId);
+        }
+    }
 }
 ```
 
@@ -922,6 +1089,32 @@ public class Test {
 }
 ```
 
+```cs
+using System;
+...
+using System.Threading.Tasks;
+using pinch;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+            String ticketId = "DEM-42";
+
+            var file = System.IO.File.OpenRead("my_path.txt");
+            var stream = new pinch.Http.Client.FileStreamInfo(file);
+
+            client.Ticket.uploadPicture(stream, ticketId);
+        }
+    }
+}
+```
+
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
 ````json
@@ -1048,6 +1241,32 @@ public class Test {
 }
 ```
 
+```cs
+using System;
+...
+using System.Threading.Tasks;
+using pinch;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+            String ticketId = "DEM-42";
+
+            var file = System.IO.File.OpenRead("my_path.txt");
+            var stream = new pinch.Http.Client.FileStreamInfo(file);
+
+            client.Ticket.uploadQuote(stream, ticketId);
+        }
+    }
+}
+```
+
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
 
 ````json
@@ -1152,6 +1371,32 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" \
 -F "file=@my_path.txt" \
 "https://api-company.inchbase.com/api/v1/tickets/42/invoice_upload"
+```
+
+```cs
+using System;
+...
+using System.Threading.Tasks;
+using pinch;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+            String ticketId = "DEM-42";
+
+            var file = System.IO.File.OpenRead("my_path.txt");
+            var stream = new pinch.Http.Client.FileStreamInfo(file);
+
+            client.Ticket.uploadInvoice(stream, ticketId);
+        }
+    }
+}
 ```
 
 > If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:

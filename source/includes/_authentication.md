@@ -43,6 +43,26 @@ public class Test {
 }
 ```
 
+````cs
+using System;
+using System.Threading.Tasks;
+...
+using pinch;
+
+namespace MyNamespace
+{
+    class MyProgram
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+        }
+    }
+}
+```
+
 > Make sure to replace `MY_API_KEY` with your API key.
 
 Pinch uses API keys to allow access to the API. You can register a new Pinch API key by contacting us.

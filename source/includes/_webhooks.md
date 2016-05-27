@@ -70,6 +70,30 @@ public class Test {
 }
 ```
 
+```cs
+using System;
+using pinch;
+using pinch.Models;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+
+            var webhook = new Webhook();
+            webhook.Url = "https://example.com/ticket_creation";
+            webhook.WebhookType = 1;
+            client.Webhook.Create(webhook);
+        }
+    }
+}
+```
+
 
 > If the parameters are correct, the above command returns JSON structured like this:
 
@@ -169,6 +193,32 @@ public class Test {
 }
 ```
 
+```cs
+using System;
+using pinch;
+using pinch.Models;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+            
+            var webhooks = client.Webhook.List();
+            foreach(var webhook in webhooks)
+            {
+                Console.WriteLine(webhook.Url);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+```
+
 > If the parameters are correct, the above command returns JSON structured like this:
 
 ```json
@@ -259,6 +309,29 @@ public class Test {
       e.printStackTrace();
     }
   }
+}
+```
+
+```cs
+using System;
+using pinch;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+
+            String webhookId = "42";
+            var webhook = client.Webhook.Get(webhookId);
+            Console.WriteLine(webhook.Url);
+            Console.ReadLine();
+        }
+    }
 }
 ```
 
@@ -361,6 +434,31 @@ public class Test {
 }
 ```
 
+```cs
+using System;
+using pinch;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+
+            String webhookId = "42";
+            var webhookController = client.Webhook;
+            var webhook = webhookController.Get(webhookId);
+            webhook.Url = "https://example.com/test";
+            webhook.WebhookType = 3;
+            webhookController.Update(webhook.Id, webhook);
+        }
+    }
+}
+```
+
 > If the parameters are correct, the above command returns JSON structured like this:
 
 ```json
@@ -429,8 +527,8 @@ import com.inchbase.pinch.PinchClient;
 public class Test {
 
   public static void main(String[] args) {
-    String apiKey = "T_8FyZfXN9tX4zfj3ZHyIQ";
-    String apiEmail = "g.provider1@yahoo.fr";
+    String apiKey = "MY_API_KEY";
+    String apiEmail = "myemail@example.com";
     PinchClient client = new PinchClient(apiKey, apiEmail);
     try {
       int webhookId = 42;
@@ -439,6 +537,27 @@ public class Test {
       e.printStackTrace();
     }
   }
+}
+```
+
+```cs
+using System;
+using pinch;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+
+            String webhookId = "42";
+            var webhookController = client.Webhook.Destroy(webhookId);
+        }
+    }
 }
 ```
 

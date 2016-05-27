@@ -58,4 +58,32 @@ public class Test {
 }
 ```
 
+
+```cs
+using System;
+...
+using System.Threading.Tasks;
+using pinch;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+
+            var webhookTypes = client.WebhookType.List();
+            foreach(var webhookType in webhookTypes)
+            {
+                Console.WriteLine(webhookType.Name);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+```
+
 This methods allows you see what webhooks you can register via the API.

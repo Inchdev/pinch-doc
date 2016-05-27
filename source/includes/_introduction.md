@@ -10,3 +10,4 @@ For the installation of one of our SDKs, refer to the corresponding repository:
 - Python : [https://github.com/Inchdev/pinch-python](https://github.com/Inchdev/pinch-python)
 - NodeJS : [https://github.com/Inchdev/pinch-node](https://github.com/Inchdev/pinch-node)
 - Java : [https://github.com/Inchdev/pinch-java](https://github.com/Inchdev/pinch-java)
+- C# / Csharp : [https://github.com/Inchdev/pinch-csharp](https://github.com/Inchdev/pinch-csharp)
