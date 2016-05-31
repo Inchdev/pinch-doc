@@ -404,10 +404,8 @@ curl -X PUT -H "Content-Type: application/json" \
 -H "Accept: application/json" -H "Content-Type: application/json" \
 -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" -d '{
-    "webhook": {
-        "url": "https://example.com/test",
-        "webhook_type": 1
-    }
+  "url": "https://example.com/test",
+  "webhook_type": 1
 }' "https://api-company.inchbase.com/api/v1/webhooks/42"
 ```
 
