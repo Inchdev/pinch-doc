@@ -24,7 +24,7 @@ Configuration.x_api_email = 'myemail@example.com'
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "https://company.inchbase.com/api/v1" \
+curl "https://api-company.inchbase.com/api/v1" \
   -H "X-API-EMAIL: myemail@example.com" \
   -H "X-API-TOKEN: MY_API_KEY" \
   -H "Accept: application/json" -H "Content-Type: application/json"
