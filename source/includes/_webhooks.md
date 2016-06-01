@@ -70,7 +70,7 @@ public class Test {
 }
 ```
 
-```cs
+```csharp
 using System;
 using pinch;
 using pinch.Models;
@@ -193,7 +193,7 @@ public class Test {
 }
 ```
 
-```cs
+```csharp
 using System;
 using pinch;
 using pinch.Models;
@@ -312,7 +312,7 @@ public class Test {
 }
 ```
 
-```cs
+```csharp
 using System;
 using pinch;
 
@@ -432,7 +432,7 @@ public class Test {
 }
 ```
 
-```cs
+```csharp
 using System;
 using pinch;
 
@@ -538,7 +538,7 @@ public class Test {
 }
 ```
 
-```cs
+```csharp
 using System;
 using pinch;
 

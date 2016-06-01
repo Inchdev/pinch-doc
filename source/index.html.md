@@ -7,7 +7,7 @@ language_tabs:
   - python: Python
   - javascript: NodeJS
   - java: Java
-  - cs: C#
+  - csharp: C Sharp
 
 toc_footers:
   - Contact us for a developer key

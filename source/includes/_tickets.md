@@ -55,7 +55,7 @@ public class Test {
 }
 ```
 
-````cs
+```csharp
 using System;
 ...
 using System.Threading.Tasks;
@@ -196,7 +196,7 @@ public class Test {
 }
 ```
 
-```cs
+```csharp
 using System;
 ...
 using System.Threading.Tasks;
@@ -336,7 +336,7 @@ public class Test {
 ```
 
 
-```cs
+```csharp
 using System;
 ...
 using System.Threading.Tasks;
@@ -486,7 +486,7 @@ public class Test {
 }
 ```
 
-```cs
+```csharp
 using System;
 ...
 using System.Threading.Tasks;
@@ -637,7 +637,7 @@ public class Test {
 }
 ```
 
-```cs
+```csharp
 using System;
 ...
 using System.Threading.Tasks;
@@ -787,7 +787,7 @@ public class Test {
 }
 ```
 
-```cs
+```csharp
 using System;
 ...
 using System.Threading.Tasks;
@@ -935,7 +935,7 @@ public class Test {
 }
 ```
 
-```cs
+```csharp
 using System;
 ...
 using System.Threading.Tasks;
@@ -1089,7 +1089,7 @@ public class Test {
 }
 ```
 
-```cs
+```csharp
 using System;
 ...
 using System.Threading.Tasks;
@@ -1241,7 +1241,7 @@ public class Test {
 }
 ```
 
-```cs
+```csharp
 using System;
 ...
 using System.Threading.Tasks;
@@ -1373,7 +1373,7 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 "https://api-company.inchbase.com/api/v1/tickets/42/invoice_upload"
 ```
 
-```cs
+```csharp
 using System;
 ...
 using System.Threading.Tasks;
