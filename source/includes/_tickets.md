@@ -559,7 +559,7 @@ To inform the manager and notify the residents of an intervention date, you can 
 
 ### HTTP Request
 
-`POST https://api-company.inchbase.com/api/v1/tickets/:id/intervention_done`
+`POST https://api-company.inchbase.com/api/v1/tickets/:id/set_intervention_date`
 
 ### Query Parameters
 
@@ -710,7 +710,7 @@ You should use this endpoint when you have finished an intervention.
 
 ### HTTP Request
 
-`POST https://api-company.inchbase.com/api/v1/tickets/:id/accept_intervention`
+`POST https://api-company.inchbase.com/api/v1/tickets/:id/intervention_done`
 
 ### Query Parameters
 
