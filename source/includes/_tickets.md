@@ -311,7 +311,7 @@ This endpoint lets you retrieve the list of all opened tickets you are currently
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
 -H "Accept: application/json" -H "Content-Type: application/json" \
-"https://api-company.inchbase.com/api/v1/42/accept"
+"https://api-company.inchbase.com/api/v1/42/accept_intervention"
 ```
 
 ```java
@@ -559,7 +559,7 @@ To inform the manager and notify the residents of an intervention date, you can 
 
 ### HTTP Request
 
-`POST https://api-company.inchbase.com/api/v1/tickets/:id/set_intervention_date`
+`POST https://api-company.inchbase.com/api/v1/tickets/:id/intervention_done`
 
 ### Query Parameters
 
@@ -612,7 +612,7 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -d '{
     "intervention_date": "2016-05-11T20:03:46.769+02:00"
 }' \
-"https://api-company.inchbase.com/tickets/42/declare_intervention_done"
+"https://api-company.inchbase.com/tickets/42/intervention_done"
 ```
 
 ```java
@@ -860,7 +860,7 @@ You can use this endpoint to send a message to the manager of the ticket.
 
 ### HTTP Request
 
-`POST https://api-company.inchbase.com/api/v1/tickets/:id/accept_intervention`
+`POST https://api-company.inchbase.com/api/v1/tickets/:id/message`
 
 ### Query Parameters
 
@@ -1011,7 +1011,7 @@ This endpoint allows you to update any documents that are related to the ticket 
 
 ### HTTP Request
 
-`POST https://api-company.inchbase.com/api/v1/tickets/:id/upload_document`
+`POST https://api-company.inchbase.com/api/v1/tickets/:id/document_upload`
 
 ### Query Parameters
 
@@ -1165,7 +1165,7 @@ You can upload here any picture related to the ticket (before or after it has be
 
 ### HTTP Request
 
-`POST https://api-company.inchbase.com/api/v1/tickets/:id/upload_picture`
+`POST https://api-company.inchbase.com/api/v1/tickets/:id/picture_upload`
 
 ### Query Parameters
 
@@ -1317,7 +1317,7 @@ When being asked for a quote, you can use this endpoint to send your quote.
 
 ### HTTP Request
 
-`POST https://api-company.inchbase.com/api/v1/tickets/:id/upload_quote`
+`POST https://api-company.inchbase.com/api/v1/tickets/:id/quote_upload`
 
 ### Query Parameters
 
@@ -1449,7 +1449,7 @@ When being asked for an invoice, you can use this endpoint to send your invoice.
 
 ### HTTP Request
 
-`POST https://api-company.inchbase.com/api/v1/tickets/:id/upload_invoice`
+`POST https://api-company.inchbase.com/api/v1/tickets/:id/invoice_upload`
 
 ### Query Parameters
 
