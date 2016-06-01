@@ -1168,50 +1168,8 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 </code></pre>
 
 <blockquote>
-<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+<p>If the parameters are correct, the above command returns an empty JSON result.</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
-  </span><span class="p">},{</span><span class="w">
-    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
-  </span><span class="p">}],</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <p>When you want to notify the manager that you accepted the intervention, you can use this endpoint.</p>
 
@@ -1315,50 +1273,8 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 </code></pre>
 
 <blockquote>
-<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+<p>If the parameters are correct, the above command returns an empty JSON result.</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
-  </span><span class="p">},{</span><span class="w">
-    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
-  </span><span class="p">}],</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <p>To inform the manager and notify the residents of an intervention date, you can use this endpoint.</p>
 
@@ -1465,50 +1381,8 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 </code></pre>
 
 <blockquote>
-<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+<p>If the parameters are correct, the above command returns an empty JSON result.</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
-  </span><span class="p">},{</span><span class="w">
-    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
-  </span><span class="p">}],</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <p>You should use this endpoint when you have finished an intervention.</p>
 
@@ -1614,50 +1488,8 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 </code></pre>
 
 <blockquote>
-<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+<p>If the parameters are correct, the above command returns an empty JSON result.</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
-  </span><span class="p">},{</span><span class="w">
-    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
-  </span><span class="p">}],</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <p>You can use this endpoint to send a message to the manager of the ticket.</p>
 
@@ -1764,50 +1596,8 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 </code></pre>
 
 <blockquote>
-<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+<p>If the parameters are correct, the above command returns an empty JSON result.</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
-  </span><span class="p">},{</span><span class="w">
-    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
-  </span><span class="p">}],</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <p>This endpoint allows you to update any documents that are related to the ticket but are neither quotes, nor invoices, nor pictures.</p>
 
@@ -1916,50 +1706,8 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 </code></pre>
 
 <blockquote>
-<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+<p>If the parameters are correct, the above command returns an empty JSON result.</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
-  </span><span class="p">},{</span><span class="w">
-    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
-  </span><span class="p">}],</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <p>You can upload here any picture related to the ticket (before or after it has been done).</p>
 
@@ -2066,50 +1814,8 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 </code></pre>
 
 <blockquote>
-<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+<p>If the parameters are correct, the above command returns an empty JSON result.</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
-  </span><span class="p">},{</span><span class="w">
-    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
-  </span><span class="p">}],</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <p>When being asked for a quote, you can use this endpoint to send your quote.</p>
 
@@ -2198,50 +1904,8 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 </code></pre>
 
 <blockquote>
-<p>If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:</p>
+<p>If the parameters are correct, the above command returns an empty JSON result.</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaine électrique arrachée"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dans le hall B"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Martin"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resident"</span><span class="w">
-  </span><span class="p">},{</span><span class="w">
-    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jean"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Durand"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"home_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01 02 03 04 05"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"mobile_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06 01 02 03 04"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Caretaker"</span><span class="w">
-  </span><span class="p">}],</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"En attente de la facture"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"building"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALPINA 4"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46 Rue René Clair"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"zip_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92700"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48.8939624"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3518942"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tenant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lucas Ferrand"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Grenier"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"french_floor_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ème Gauche"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"access"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digicode : 4633B"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cabinet Inch Immobilier"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"manager"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thomas THIMOTHÉE"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
 <p>When being asked for an invoice, you can use this endpoint to send your invoice.</p>
 
