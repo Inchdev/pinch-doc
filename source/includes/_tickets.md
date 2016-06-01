@@ -117,6 +117,10 @@ namespace ConsoleApplication1
     "kind": "Grenier",
     "french_floor_number": "4ème Gauche"
   },
+  "intervention": {
+    "intervention_date": "2016-05-11T20:03:46.769+02:00",
+    "done": false
+  },
   "access": "Digicode : 4633B",
   "agency": "Cabinet Inch Immobilier",
   "manager": "Thomas THIMOTHÉE",
@@ -258,6 +262,10 @@ namespace ConsoleApplication1
     "floor_number": "4",
     "kind": "Grenier",
     "french_floor_number": "4ème Gauche"
+  },
+  "intervention": {
+    "intervention_date": "2016-05-11T20:03:46.769+02:00",
+    "done": false
   },
   "access": "Digicode : 4633B",
   "agency": "Cabinet Inch Immobilier",
