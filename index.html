@@ -1125,7 +1125,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 <pre class="highlight shell"><code>curl -X POST -H <span class="s2">"X-API-EMAIL: myemail@example.com"</span> <span class="se">\</span>
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
 -H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-<span class="s2">"https://api-company.inchbase.com/api/v1/42/accept"</span>
+<span class="s2">"https://api-company.inchbase.com/api/v1/42/accept_intervention"</span>
 </code></pre>
 <pre class="highlight java"><code><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
 
@@ -1364,7 +1364,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/set_intervention_date</code></p>
+<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/intervention_done</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1420,7 +1420,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 -d <span class="s1">'{
     "intervention_date": "2016-05-11T20:03:46.769+02:00"
 }'</span> <span class="se">\</span>
-<span class="s2">"https://api-company.inchbase.com/tickets/42/declare_intervention_done"</span>
+<span class="s2">"https://api-company.inchbase.com/tickets/42/intervention_done"</span>
 </code></pre>
 <pre class="highlight java"><code><span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
@@ -1663,7 +1663,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/accept_intervention</code></p>
+<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/message</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1813,7 +1813,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/upload_document</code></p>
+<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/document_upload</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1965,7 +1965,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/upload_picture</code></p>
+<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/picture_upload</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -2115,7 +2115,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/upload_quote</code></p>
+<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/quote_upload</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -2247,7 +2247,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/upload_invoice</code></p>
+<p><code class="prettyprint">POST https://api-company.inchbase.com/api/v1/tickets/:id/invoice_upload</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
