@@ -311,7 +311,7 @@ This endpoint lets you retrieve the list of all opened tickets you are currently
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
 -H "Accept: application/json" -H "Content-Type: application/json" \
-"https://api-company.inchbase.com/api/v1/42/accept_intervention"
+"https://api-company.inchbase.com/api/v1/REL-42/accept_intervention"
 ```
 
 ```java
@@ -460,7 +460,7 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -d '{
     "intervention_date": "2016-05-11T20:03:46.769+02:00"
 }' \
-"https://api-company.inchbase.com/tickets/42/set_intervention_date"
+"https://api-company.inchbase.com/tickets/DEM-42/set_intervention_date"
 ```
 
 ```java
@@ -612,7 +612,7 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -d '{
     "intervention_date": "2016-05-11T20:03:46.769+02:00"
 }' \
-"https://api-company.inchbase.com/tickets/42/intervention_done"
+"https://api-company.inchbase.com/tickets/DEM-42/intervention_done"
 ```
 
 ```java
@@ -765,7 +765,7 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -d '{
     "body": "Salut"
 }' \
-"https://api-company.inchbase.com/api/v1/tickets/42/message"
+"https://api-company.inchbase.com/api/v1/tickets/DEM-42/message"
 ```
 
 ```java
@@ -912,7 +912,7 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
 -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" \
 -F "file=@my_path.txt" \
-"https://api-company.inchbase.com/api/v1/tickets/42/document_upload"
+"https://api-company.inchbase.com/api/v1/tickets/DEM-42/document_upload"
 ```
 
 ```java
@@ -1066,7 +1066,7 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
 -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" \
 -F "file=@my_path.txt" \
-"https://api-company.inchbase.com/api/v1/tickets/42/picture_upload"
+"https://api-company.inchbase.com/api/v1/tickets/DEM-42/picture_upload"
 ```
 
 ```java
@@ -1218,7 +1218,7 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
 -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" \
 -F "file=@my_path.txt" \
-"https://api-company.inchbase.com/api/v1/tickets/42/quote_upload"
+"https://api-company.inchbase.com/api/v1/tickets/DEM-42/quote_upload"
 ```
 
 ```java
@@ -1370,7 +1370,7 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
 -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" \
 -F "file=@my_path.txt" \
-"https://api-company.inchbase.com/api/v1/tickets/42/invoice_upload"
+"https://api-company.inchbase.com/api/v1/tickets/DEM-42/invoice_upload"
 ```
 
 ```csharp
