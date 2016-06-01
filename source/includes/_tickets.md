@@ -358,51 +358,7 @@ namespace ConsoleApplication1
 }
 ```
 
-> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
-
-````json
-{
-  "id": 42,
-  "name": "Gaine électrique arrachée",
-  "description": "Dans le hall B",
-  "contacts": [{
-    "firstname": "Martin",
-    "lastname": "Dupont",
-    "home_phone_number": "01 02 03 04 05",
-    "mobile_phone_number": "06 01 02 03 04",
-    "role": "Resident"
-  },{
-    "firstname": "Jean",
-    "lastname": "Durand",
-    "home_phone_number": "01 02 03 04 05",
-    "mobile_phone_number": "06 01 02 03 04",
-    "role": "Caretaker"
-  }],
-  "status": "En attente de la facture",
-  "building": {
-    "reference": "1234",
-    "name": "ALPINA 4",
-    "address": "46 Rue René Clair",
-    "zip_code": "92700",
-    "city": "Paris",
-    "country": "France",
-    "latitude": "48.8939624",
-    "longitude": "2.3518942"
-  },
-  "unit": {
-    "reference": "002",
-    "tenant_name": "Lucas Ferrand",
-    "floor_number": "4",
-    "kind": "Grenier",
-    "french_floor_number": "4ème Gauche"
-  },
-  "access": "Digicode : 4633B",
-  "agency": "Cabinet Inch Immobilier",
-  "manager": "Thomas THIMOTHÉE",
-  "created_at": "2016-05-11T20:03:46.769+02:00",
-  "updated_at": "2016-05-11T20:03:46.769+02:00"
-}
-````
+> If the parameters are correct, the above command returns an empty JSON result.
 
 When you want to notify the manager that you accepted the intervention, you can use this endpoint.
 
@@ -509,51 +465,7 @@ namespace ConsoleApplication1
 }
 ```
 
-> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
-
-````json
-{
-  "id": 42,
-  "name": "Gaine électrique arrachée",
-  "description": "Dans le hall B",
-  "contacts": [{
-    "firstname": "Martin",
-    "lastname": "Dupont",
-    "home_phone_number": "01 02 03 04 05",
-    "mobile_phone_number": "06 01 02 03 04",
-    "role": "Resident"
-  },{
-    "firstname": "Jean",
-    "lastname": "Durand",
-    "home_phone_number": "01 02 03 04 05",
-    "mobile_phone_number": "06 01 02 03 04",
-    "role": "Caretaker"
-  }],
-  "status": "En attente de la facture",
-  "building": {
-    "reference": "1234",
-    "name": "ALPINA 4",
-    "address": "46 Rue René Clair",
-    "zip_code": "92700",
-    "city": "Paris",
-    "country": "France",
-    "latitude": "48.8939624",
-    "longitude": "2.3518942"
-  },
-  "unit": {
-    "reference": "002",
-    "tenant_name": "Lucas Ferrand",
-    "floor_number": "4",
-    "kind": "Grenier",
-    "french_floor_number": "4ème Gauche"
-  },
-  "access": "Digicode : 4633B",
-  "agency": "Cabinet Inch Immobilier",
-  "manager": "Thomas THIMOTHÉE",
-  "created_at": "2016-05-11T20:03:46.769+02:00",
-  "updated_at": "2016-05-11T20:03:46.769+02:00"
-}
-````
+> If the parameters are correct, the above command returns an empty JSON result.
 
 To inform the manager and notify the residents of an intervention date, you can use this endpoint.
 
@@ -660,51 +572,7 @@ namespace ConsoleApplication1
 }
 ```
 
-> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
-
-````json
-{
-  "id": 42,
-  "name": "Gaine électrique arrachée",
-  "description": "Dans le hall B",
-  "contacts": [{
-    "firstname": "Martin",
-    "lastname": "Dupont",
-    "home_phone_number": "01 02 03 04 05",
-    "mobile_phone_number": "06 01 02 03 04",
-    "role": "Resident"
-  },{
-    "firstname": "Jean",
-    "lastname": "Durand",
-    "home_phone_number": "01 02 03 04 05",
-    "mobile_phone_number": "06 01 02 03 04",
-    "role": "Caretaker"
-  }],
-  "status": "En attente de la facture",
-  "building": {
-    "reference": "1234",
-    "name": "ALPINA 4",
-    "address": "46 Rue René Clair",
-    "zip_code": "92700",
-    "city": "Paris",
-    "country": "France",
-    "latitude": "48.8939624",
-    "longitude": "2.3518942"
-  },
-  "unit": {
-    "reference": "002",
-    "tenant_name": "Lucas Ferrand",
-    "floor_number": "4",
-    "kind": "Grenier",
-    "french_floor_number": "4ème Gauche"
-  },
-  "access": "Digicode : 4633B",
-  "agency": "Cabinet Inch Immobilier",
-  "manager": "Thomas THIMOTHÉE",
-  "created_at": "2016-05-11T20:03:46.769+02:00",
-  "updated_at": "2016-05-11T20:03:46.769+02:00"
-}
-````
+> If the parameters are correct, the above command returns an empty JSON result.
 
 You should use this endpoint when you have finished an intervention.
 
@@ -810,51 +678,7 @@ namespace ConsoleApplication1
 }
 ```
 
-> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
-
-````json
-{
-  "id": 42,
-  "name": "Gaine électrique arrachée",
-  "description": "Dans le hall B",
-  "contacts": [{
-    "firstname": "Martin",
-    "lastname": "Dupont",
-    "home_phone_number": "01 02 03 04 05",
-    "mobile_phone_number": "06 01 02 03 04",
-    "role": "Resident"
-  },{
-    "firstname": "Jean",
-    "lastname": "Durand",
-    "home_phone_number": "01 02 03 04 05",
-    "mobile_phone_number": "06 01 02 03 04",
-    "role": "Caretaker"
-  }],
-  "status": "En attente de la facture",
-  "building": {
-    "reference": "1234",
-    "name": "ALPINA 4",
-    "address": "46 Rue René Clair",
-    "zip_code": "92700",
-    "city": "Paris",
-    "country": "France",
-    "latitude": "48.8939624",
-    "longitude": "2.3518942"
-  },
-  "unit": {
-    "reference": "002",
-    "tenant_name": "Lucas Ferrand",
-    "floor_number": "4",
-    "kind": "Grenier",
-    "french_floor_number": "4ème Gauche"
-  },
-  "access": "Digicode : 4633B",
-  "agency": "Cabinet Inch Immobilier",
-  "manager": "Thomas THIMOTHÉE",
-  "created_at": "2016-05-11T20:03:46.769+02:00",
-  "updated_at": "2016-05-11T20:03:46.769+02:00"
-}
-````
+> If the parameters are correct, the above command returns an empty JSON result.
 
 You can use this endpoint to send a message to the manager of the ticket.
 
@@ -961,51 +785,7 @@ namespace ConsoleApplication1
 }
 ```
 
-> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
-
-````json
-{
-  "id": 42,
-  "name": "Gaine électrique arrachée",
-  "description": "Dans le hall B",
-  "contacts": [{
-    "firstname": "Martin",
-    "lastname": "Dupont",
-    "home_phone_number": "01 02 03 04 05",
-    "mobile_phone_number": "06 01 02 03 04",
-    "role": "Resident"
-  },{
-    "firstname": "Jean",
-    "lastname": "Durand",
-    "home_phone_number": "01 02 03 04 05",
-    "mobile_phone_number": "06 01 02 03 04",
-    "role": "Caretaker"
-  }],
-  "status": "En attente de la facture",
-  "building": {
-    "reference": "1234",
-    "name": "ALPINA 4",
-    "address": "46 Rue René Clair",
-    "zip_code": "92700",
-    "city": "Paris",
-    "country": "France",
-    "latitude": "48.8939624",
-    "longitude": "2.3518942"
-  },
-  "unit": {
-    "reference": "002",
-    "tenant_name": "Lucas Ferrand",
-    "floor_number": "4",
-    "kind": "Grenier",
-    "french_floor_number": "4ème Gauche"
-  },
-  "access": "Digicode : 4633B",
-  "agency": "Cabinet Inch Immobilier",
-  "manager": "Thomas THIMOTHÉE",
-  "created_at": "2016-05-11T20:03:46.769+02:00",
-  "updated_at": "2016-05-11T20:03:46.769+02:00"
-}
-````
+> If the parameters are correct, the above command returns an empty JSON result.
 
 This endpoint allows you to update any documents that are related to the ticket but are neither quotes, nor invoices, nor pictures.
 
@@ -1115,51 +895,7 @@ namespace ConsoleApplication1
 }
 ```
 
-> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
-
-````json
-{
-  "id": 42,
-  "name": "Gaine électrique arrachée",
-  "description": "Dans le hall B",
-  "contacts": [{
-    "firstname": "Martin",
-    "lastname": "Dupont",
-    "home_phone_number": "01 02 03 04 05",
-    "mobile_phone_number": "06 01 02 03 04",
-    "role": "Resident"
-  },{
-    "firstname": "Jean",
-    "lastname": "Durand",
-    "home_phone_number": "01 02 03 04 05",
-    "mobile_phone_number": "06 01 02 03 04",
-    "role": "Caretaker"
-  }],
-  "status": "En attente de la facture",
-  "building": {
-    "reference": "1234",
-    "name": "ALPINA 4",
-    "address": "46 Rue René Clair",
-    "zip_code": "92700",
-    "city": "Paris",
-    "country": "France",
-    "latitude": "48.8939624",
-    "longitude": "2.3518942"
-  },
-  "unit": {
-    "reference": "002",
-    "tenant_name": "Lucas Ferrand",
-    "floor_number": "4",
-    "kind": "Grenier",
-    "french_floor_number": "4ème Gauche"
-  },
-  "access": "Digicode : 4633B",
-  "agency": "Cabinet Inch Immobilier",
-  "manager": "Thomas THIMOTHÉE",
-  "created_at": "2016-05-11T20:03:46.769+02:00",
-  "updated_at": "2016-05-11T20:03:46.769+02:00"
-}
-````
+> If the parameters are correct, the above command returns an empty JSON result.
 
 You can upload here any picture related to the ticket (before or after it has been done).
 
@@ -1267,51 +1003,7 @@ namespace ConsoleApplication1
 }
 ```
 
-> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
-
-````json
-{
-  "id": 42,
-  "name": "Gaine électrique arrachée",
-  "description": "Dans le hall B",
-  "contacts": [{
-    "firstname": "Martin",
-    "lastname": "Dupont",
-    "home_phone_number": "01 02 03 04 05",
-    "mobile_phone_number": "06 01 02 03 04",
-    "role": "Resident"
-  },{
-    "firstname": "Jean",
-    "lastname": "Durand",
-    "home_phone_number": "01 02 03 04 05",
-    "mobile_phone_number": "06 01 02 03 04",
-    "role": "Caretaker"
-  }],
-  "status": "En attente de la facture",
-  "building": {
-    "reference": "1234",
-    "name": "ALPINA 4",
-    "address": "46 Rue René Clair",
-    "zip_code": "92700",
-    "city": "Paris",
-    "country": "France",
-    "latitude": "48.8939624",
-    "longitude": "2.3518942"
-  },
-  "unit": {
-    "reference": "002",
-    "tenant_name": "Lucas Ferrand",
-    "floor_number": "4",
-    "kind": "Grenier",
-    "french_floor_number": "4ème Gauche"
-  },
-  "access": "Digicode : 4633B",
-  "agency": "Cabinet Inch Immobilier",
-  "manager": "Thomas THIMOTHÉE",
-  "created_at": "2016-05-11T20:03:46.769+02:00",
-  "updated_at": "2016-05-11T20:03:46.769+02:00"
-}
-````
+> If the parameters are correct, the above command returns an empty JSON result.
 
 When being asked for a quote, you can use this endpoint to send your quote.
 
@@ -1399,51 +1091,7 @@ namespace ConsoleApplication1
 }
 ```
 
-> If the parameters are correct, the above command returns JSON structured like this representing the updated ticket:
-
-````json
-{
-  "id": 42,
-  "name": "Gaine électrique arrachée",
-  "description": "Dans le hall B",
-  "contacts": [{
-    "firstname": "Martin",
-    "lastname": "Dupont",
-    "home_phone_number": "01 02 03 04 05",
-    "mobile_phone_number": "06 01 02 03 04",
-    "role": "Resident"
-  },{
-    "firstname": "Jean",
-    "lastname": "Durand",
-    "home_phone_number": "01 02 03 04 05",
-    "mobile_phone_number": "06 01 02 03 04",
-    "role": "Caretaker"
-  }],
-  "status": "En attente de la facture",
-  "building": {
-    "reference": "1234",
-    "name": "ALPINA 4",
-    "address": "46 Rue René Clair",
-    "zip_code": "92700",
-    "city": "Paris",
-    "country": "France",
-    "latitude": "48.8939624",
-    "longitude": "2.3518942"
-  },
-  "unit": {
-    "reference": "002",
-    "tenant_name": "Lucas Ferrand",
-    "floor_number": "4",
-    "kind": "Grenier",
-    "french_floor_number": "4ème Gauche"
-  },
-  "access": "Digicode : 4633B",
-  "agency": "Cabinet Inch Immobilier",
-  "manager": "Thomas THIMOTHÉE",
-  "created_at": "2016-05-11T20:03:46.769+02:00",
-  "updated_at": "2016-05-11T20:03:46.769+02:00"
-}
-````
+> If the parameters are correct, the above command returns an empty JSON result.
 
 When being asked for an invoice, you can use this endpoint to send your invoice.
 
