@@ -311,7 +311,7 @@ This endpoint lets you retrieve the list of all opened tickets you are currently
 curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -H "X-API-TOKEN: MY_API_KEY" \
 -H "Accept: application/json" -H "Content-Type: application/json" \
-"https://api-company.inchbase.com/api/v1/REL-42/accept_intervention"
+"https://api-company.inchbase.com/api/v1/tickets/REL-42/accept_intervention"
 ```
 
 ```java
