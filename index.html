@@ -1125,7 +1125,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 <pre class="highlight shell"><code>curl -X POST -H <span class="s2">"X-API-EMAIL: myemail@example.com"</span> <span class="se">\</span>
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
 -H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-<span class="s2">"https://api-company.inchbase.com/api/v1/42/accept_intervention"</span>
+<span class="s2">"https://api-company.inchbase.com/api/v1/REL-42/accept_intervention"</span>
 </code></pre>
 <pre class="highlight java"><code><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
 
@@ -1269,7 +1269,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 -d <span class="s1">'{
     "intervention_date": "2016-05-11T20:03:46.769+02:00"
 }'</span> <span class="se">\</span>
-<span class="s2">"https://api-company.inchbase.com/tickets/42/set_intervention_date"</span>
+<span class="s2">"https://api-company.inchbase.com/tickets/DEM-42/set_intervention_date"</span>
 </code></pre>
 <pre class="highlight java"><code><span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
@@ -1420,7 +1420,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 -d <span class="s1">'{
     "intervention_date": "2016-05-11T20:03:46.769+02:00"
 }'</span> <span class="se">\</span>
-<span class="s2">"https://api-company.inchbase.com/tickets/42/intervention_done"</span>
+<span class="s2">"https://api-company.inchbase.com/tickets/DEM-42/intervention_done"</span>
 </code></pre>
 <pre class="highlight java"><code><span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
@@ -1572,7 +1572,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 -d <span class="s1">'{
     "body": "Salut"
 }'</span> <span class="se">\</span>
-<span class="s2">"https://api-company.inchbase.com/api/v1/tickets/42/message"</span>
+<span class="s2">"https://api-company.inchbase.com/api/v1/tickets/DEM-42/message"</span>
 </code></pre>
 <pre class="highlight java"><code><span class="kn">import</span> <span class="nn">com.inchbase.pinch.PinchClient</span><span class="o">;</span>
 
@@ -1718,7 +1718,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"</span> <span class="se">\</span>
 -F <span class="s2">"file=@my_path.txt"</span> <span class="se">\</span>
-<span class="s2">"https://api-company.inchbase.com/api/v1/tickets/42/document_upload"</span>
+<span class="s2">"https://api-company.inchbase.com/api/v1/tickets/DEM-42/document_upload"</span>
 </code></pre>
 <pre class="highlight java"><code><span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">com.inchbase.pinch.PinchClient</span><span class="o">;</span>
@@ -1870,7 +1870,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"</span> <span class="se">\</span>
 -F <span class="s2">"file=@my_path.txt"</span> <span class="se">\</span>
-<span class="s2">"https://api-company.inchbase.com/api/v1/tickets/42/picture_upload"</span>
+<span class="s2">"https://api-company.inchbase.com/api/v1/tickets/DEM-42/picture_upload"</span>
 </code></pre>
 <pre class="highlight java"><code><span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">com.inchbase.pinch.PinchClient</span><span class="o">;</span>
@@ -2020,7 +2020,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"</span> <span class="se">\</span>
 -F <span class="s2">"file=@my_path.txt"</span> <span class="se">\</span>
-<span class="s2">"https://api-company.inchbase.com/api/v1/tickets/42/quote_upload"</span>
+<span class="s2">"https://api-company.inchbase.com/api/v1/tickets/DEM-42/quote_upload"</span>
 </code></pre>
 <pre class="highlight java"><code><span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">com.inchbase.pinch.PinchClient</span><span class="o">;</span>
@@ -2170,7 +2170,7 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
 -H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"</span> <span class="se">\</span>
 -F <span class="s2">"file=@my_path.txt"</span> <span class="se">\</span>
-<span class="s2">"https://api-company.inchbase.com/api/v1/tickets/42/invoice_upload"</span>
+<span class="s2">"https://api-company.inchbase.com/api/v1/tickets/DEM-42/invoice_upload"</span>
 </code></pre>
 <pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="p">...</span>
