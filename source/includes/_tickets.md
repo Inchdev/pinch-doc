@@ -612,7 +612,7 @@ curl -X POST -H "X-API-EMAIL: myemail@example.com" \
 -d '{
     "intervention_date": "2016-05-11T20:03:46.769+02:00"
 }' \
-"https://api-company.inchbase.com/tickets/DEM-42/intervention_done"
+"https://api-company.inchbase.com/api/v1/tickets/DEM-42/intervention_done"
 ```
 
 ```java
