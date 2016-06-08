@@ -1217,3 +1217,108 @@ namespace ConsoleApplication1
 <aside class="notice">
   Theses documents do not include quotes or invoices. Only documents related to the intervention.
 </aside>
+
+## Get messages of a ticket
+
+```shell
+curl -X GET -H "X-API-EMAIL: myemail@example.com" \
+-H "X-API-TOKEN: MY_API_KEY" \
+-H "Accept: application/json" -H "Content-Type: application/json" \
+"https://api-company.inchbase.com/api/v1/tickets/{{ticket_id}}/messages"
+```
+
+````python
+from Pinch import *
+ticket_id = 42
+controller = TicketController()
+documents = controller.messages(ticket_id)
+````
+
+```javascript
+  var pinch = require('pinch-api');
+  
+  pinch.configuration.xAPITOKEN = 'MY_API_KEY';
+  pinch.configuration.xAPIEMAIL = 'myemail@example.com';
+
+  var ticketId = 42;
+  pinch.TicketController.messages(ticketId, function(error, result){
+    console.log(result);
+  });
+```
+
+````ruby
+  require 'pinch'
+  ticket_id = 42
+  pinch = Pinch::PinchClient.new(x_api_token: "MY_API_KEY", x_api_email: "myemail@example.com")
+  pinch.ticket.messages ticket_id
+````
+
+```java
+import com.inchbase.pinch.PinchClient;
+import com.inchbase.pinch.models.Ticket;
+import com.inchbase.pinch.models.Message;
+
+public class Test {
+  public static void main(String[] args) {
+    String apiKey = "MY_API_KEY";
+    String apiEmail = "myemail@example.com";
+    PinchClient client = new PinchClient(apiKey, apiEmail);
+    try {
+      String ticketId = "DEM-42";
+      List<Message> messages = client.getTicket().messages(ticketId);
+      for(Message message : messages){
+        System.out.println(ticket.getUrl());
+      }
+    } catch (Throwable e) {
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+```csharp
+using System;
+...
+using System.Threading.Tasks;
+using pinch;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        private static PinchClient client;
+
+        static void Main(string[] args)
+        {
+            client = new PinchClient("MY_API_KEY", "myemail@example.com");
+            String ticketId = "42";
+            var messages = client.Ticket.Messages(ticketId);
+            Console.ReadLine();
+        }
+    }
+}
+```
+
+
+> If the parameters are correct, the above command returns the following JSON result
+
+```json
+[{
+  "id": 42,
+  "body": "Voici le message, parfois en html",
+  "created_at": "2016-05-11T20:03:46.769+02:00",
+  "message_type": "email",
+  "raw_html": null,
+  "sender": {
+    "email": "h.dupont@gmail.com",
+    "firstname": "Henri",
+    "lastname": "Dupont",
+    "type": "User"
+  },
+  "subject": "Subject of the message"
+}, ...]
+```
+
+### HTTP Request
+
+`GET https://api-company.inchbase.com/api/v1/tickets/:id/messages`
