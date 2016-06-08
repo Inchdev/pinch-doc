@@ -2030,6 +2030,302 @@ Be careful, you won&rsquo;t be able to access this webhook and any stats that co
   Theses documents do not include quotes or invoices. Only documents related to the intervention.
 </aside>
 
+<h2 id="get-messages-of-a-ticket">Get messages of a ticket</h2>
+<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"X-API-EMAIL: myemail@example.com"</span> <span class="se">\</span>
+-H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="s2">"https://api-company.inchbase.com/api/v1/tickets/{{ticket_id}}/messages"</span>
+</code></pre>
+<pre class="highlight python"><code><span class="kn">from</span> <span class="nn">Pinch</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">ticket_id</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">controller</span> <span class="o">=</span> <span class="n">TicketController</span><span class="p">()</span>
+<span class="n">documents</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">messages</span><span class="p">(</span><span class="n">ticket_id</span><span class="p">)</span>
+</code></pre>
+<pre class="highlight javascript"><code>  <span class="kd">var</span> <span class="nx">pinch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'pinch-api'</span><span class="p">);</span>
+
+  <span class="nx">pinch</span><span class="p">.</span><span class="nx">configuration</span><span class="p">.</span><span class="nx">xAPITOKEN</span> <span class="o">=</span> <span class="s1">'MY_API_KEY'</span><span class="p">;</span>
+  <span class="nx">pinch</span><span class="p">.</span><span class="nx">configuration</span><span class="p">.</span><span class="nx">xAPIEMAIL</span> <span class="o">=</span> <span class="s1">'myemail@example.com'</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">ticketId</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+  <span class="nx">pinch</span><span class="p">.</span><span class="nx">TicketController</span><span class="p">.</span><span class="nx">messages</span><span class="p">(</span><span class="nx">ticketId</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">result</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+  <span class="p">});</span>
+</code></pre>
+<pre class="highlight ruby"><code>  <span class="nb">require</span> <span class="s1">'pinch'</span>
+  <span class="n">ticket_id</span> <span class="o">=</span> <span class="mi">42</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+  <span class="n">pinch</span><span class="p">.</span><span class="nf">ticket</span><span class="p">.</span><span class="nf">messages</span> <span class="n">ticket_id</span>
+</code></pre>
+<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">com.inchbase.pinch.PinchClient</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.inchbase.pinch.models.Ticket</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.inchbase.pinch.models.Message</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">apiKey</span> <span class="o">=</span> <span class="s">"MY_API_KEY"</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">apiEmail</span> <span class="o">=</span> <span class="s">"myemail@example.com"</span><span class="o">;</span>
+    <span class="n">PinchClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PinchClient</span><span class="o">(</span><span class="n">apiKey</span><span class="o">,</span> <span class="n">apiEmail</span><span class="o">);</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="n">String</span> <span class="n">ticketId</span> <span class="o">=</span> <span class="s">"DEM-42"</span><span class="o">;</span>
+      <span class="n">List</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">&gt;</span> <span class="n">messages</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">getTicket</span><span class="o">().</span><span class="na">messages</span><span class="o">(</span><span class="n">ticketId</span><span class="o">);</span>
+      <span class="k">for</span><span class="o">(</span><span class="n">Message</span> <span class="n">message</span> <span class="o">:</span> <span class="n">messages</span><span class="o">){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ticket</span><span class="o">.</span><span class="na">getUrl</span><span class="o">());</span>
+      <span class="o">}</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Throwable</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+            <span class="n">String</span> <span class="n">ticketId</span> <span class="p">=</span> <span class="s">"42"</span><span class="p">;</span>
+            <span class="n">var</span> <span class="n">messages</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Ticket</span><span class="p">.</span><span class="nf">Messages</span><span class="p">(</span><span class="n">ticketId</span><span class="p">);</span>
+            <span class="n">Console</span><span class="p">.</span><span class="nf">ReadLine</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<blockquote>
+<p>If the parameters are correct, the above command returns the following JSON result</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Voici le message, parfois en html"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"raw_html"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"h.dupont@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Henri"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dupont"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Subject of the message"</span><span class="w">
+</span><span class="p">},</span><span class="w"> </span><span class="err">...</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api-company.inchbase.com/api/v1/tickets/:id/messages</code></p>
+
+          <h1 id="servers">Servers</h1>
+
+<h2 id="list-clients-using-inch">List clients using Inch</h2>
+<pre class="highlight ruby"><code>  <span class="nb">require</span> <span class="s1">'pinch'</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+  <span class="n">servers</span> <span class="o">=</span> <span class="n">pinch</span><span class="p">.</span><span class="nf">servers</span><span class="p">.</span><span class="nf">list</span>
+  <span class="n">servers</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">server</span><span class="o">|</span>
+    <span class="nb">puts</span> <span class="n">server</span><span class="p">.</span><span class="nf">name</span>
+  <span class="k">end</span>
+</code></pre>
+<pre class="highlight python"><code><span class="kn">from</span> <span class="nn">Pinch</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">controller</span> <span class="o">=</span> <span class="n">ServerController</span><span class="p">()</span>
+<span class="n">servers</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="nb">list</span><span class="p">()</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">pinch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'pinch-api'</span><span class="p">);</span>
+
+<span class="nx">pinch</span><span class="p">.</span><span class="nx">configuration</span><span class="p">.</span><span class="nx">xAPITOKEN</span> <span class="o">=</span> <span class="s1">'MY_API_KEY'</span><span class="p">;</span>
+<span class="nx">pinch</span><span class="p">.</span><span class="nx">configuration</span><span class="p">.</span><span class="nx">xAPIEMAIL</span> <span class="o">=</span> <span class="s1">'myemail@example.com'</span><span class="p">;</span>
+
+<span class="nx">pinch</span><span class="p">.</span><span class="nx">ServerController</span><span class="p">.</span><span class="nx">list</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">result</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"X-API-EMAIL: myemail@example.com"</span> <span class="se">\</span>
+-H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="s2">"https://api-company.inchbase.com/api/v1/servers"</span>
+</code></pre>
+<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">com.inchbase.pinch.PinchClient</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.inchbase.pinch.models.Server</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">apiKey</span> <span class="o">=</span> <span class="s">"MY_API_KEY"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">apiEmail</span> <span class="o">=</span> <span class="s">"myemail@example.com"</span><span class="o">;</span>
+        <span class="n">PinchClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PinchClient</span><span class="o">(</span><span class="n">apiKey</span><span class="o">,</span> <span class="n">apiEmail</span><span class="o">);</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">List</span><span class="o">&lt;</span><span class="n">Server</span><span class="o">&gt;</span> <span class="n">servers</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">getServer</span><span class="o">().</span><span class="na">list</span><span class="o">();</span>
+            <span class="k">for</span><span class="o">(</span><span class="n">Server</span> <span class="n">server</span> <span class="o">:</span> <span class="n">servers</span><span class="o">){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">server</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+      <span class="o">}</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Throwable</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+            <span class="n">var</span> <span class="n">servers</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Server</span><span class="p">.</span><span class="nf">List</span><span class="p">();</span>
+            <span class="k">foreach</span><span class="p">(</span><span class="n">var</span> <span class="n">server</span> <span class="k">in</span> <span class="n">servers</span><span class="p">){</span>
+              <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">server</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">Console</span><span class="p">.</span><span class="nf">ReadLine</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<blockquote>
+<p>If the parameters are correct, the above command returns JSON structured like this representing the list of your clients using Inch:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Demo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"server_short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEM"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint lets you retrieve the list of all your clients using Inch. Please contact us if we forgot one.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api-company.inchbase.com/api/v1/servers</code></p>
+
+          <h1 id="logs">Logs</h1>
+
+<h2 id="list-your-requests">List your requests</h2>
+<pre class="highlight ruby"><code>  <span class="nb">require</span> <span class="s1">'pinch'</span>
+  <span class="n">pinch</span> <span class="o">=</span> <span class="no">Pinch</span><span class="o">::</span><span class="no">PinchClient</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">x_api_token: </span><span class="s2">"MY_API_KEY"</span><span class="p">,</span> <span class="ss">x_api_email: </span><span class="s2">"myemail@example.com"</span><span class="p">)</span>
+  <span class="n">page_num</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">logs</span> <span class="o">=</span> <span class="n">pinch</span><span class="p">.</span><span class="nf">logs</span><span class="p">.</span><span class="nf">list</span> <span class="n">page_num</span>
+  <span class="n">logs</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">log</span><span class="o">|</span>
+    <span class="nb">puts</span> <span class="n">log</span><span class="p">.</span><span class="nf">name</span>
+  <span class="k">end</span>
+</code></pre>
+<pre class="highlight python"><code><span class="kn">from</span> <span class="nn">Pinch</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">controller</span> <span class="o">=</span> <span class="n">LogController</span><span class="p">()</span>
+<span class="n">page_num</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">logs</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="nb">list</span><span class="p">(</span><span class="n">page_num</span><span class="p">)</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">pinch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'pinch-api'</span><span class="p">);</span>
+
+<span class="nx">pinch</span><span class="p">.</span><span class="nx">configuration</span><span class="p">.</span><span class="nx">xAPITOKEN</span> <span class="o">=</span> <span class="s1">'MY_API_KEY'</span><span class="p">;</span>
+<span class="nx">pinch</span><span class="p">.</span><span class="nx">configuration</span><span class="p">.</span><span class="nx">xAPIEMAIL</span> <span class="o">=</span> <span class="s1">'myemail@example.com'</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">pageNum</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nx">pinch</span><span class="p">.</span><span class="nx">LogController</span><span class="p">.</span><span class="nx">list</span><span class="p">(</span><span class="nx">pageNum</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">result</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<pre class="highlight shell"><code>curl -X GET -H <span class="s2">"X-API-EMAIL: myemail@example.com"</span> <span class="se">\</span>
+-H <span class="s2">"X-API-TOKEN: MY_API_KEY"</span> <span class="se">\</span>
+-H <span class="s2">"Accept: application/json"</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="s2">"https://api-company.inchbase.com/api/v1/logs?page=1"</span>
+</code></pre>
+<pre class="highlight java"><code><span class="kn">import</span> <span class="nn">com.inchbase.pinch.PinchClient</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.inchbase.pinch.models.Log</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">apiKey</span> <span class="o">=</span> <span class="s">"MY_API_KEY"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">apiEmail</span> <span class="o">=</span> <span class="s">"myemail@example.com"</span><span class="o">;</span>
+        <span class="n">PinchClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PinchClient</span><span class="o">(</span><span class="n">apiKey</span><span class="o">,</span> <span class="n">apiEmail</span><span class="o">);</span>
+        <span class="k">try</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">pageNum</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="n">List</span><span class="o">&lt;</span><span class="n">Log</span><span class="o">&gt;</span> <span class="n">logs</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">getLog</span><span class="o">().</span><span class="na">list</span><span class="o">(</span><span class="n">pageNum</span><span class="o">);</span>
+            <span class="k">for</span><span class="o">(</span><span class="n">Log</span> <span class="n">log</span> <span class="o">:</span> <span class="n">logs</span><span class="o">){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">log</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+      <span class="o">}</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Throwable</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<pre class="highlight csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="p">...</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">pinch</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ConsoleApplication1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">PinchClient</span> <span class="n">client</span><span class="p">;</span>
+
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PinchClient</span><span class="p">(</span><span class="s">"MY_API_KEY"</span><span class="p">,</span> <span class="s">"myemail@example.com"</span><span class="p">);</span>
+            <span class="n">var</span> <span class="n">pageNum</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+            <span class="n">var</span> <span class="n">logs</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="n">Log</span><span class="p">.</span><span class="nf">List</span><span class="p">(</span><span class="n">pageNum</span><span class="p">);</span>
+            <span class="k">foreach</span><span class="p">(</span><span class="n">var</span> <span class="n">log</span> <span class="k">in</span> <span class="n">logs</span><span class="p">){</span>
+              <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">log</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">Console</span><span class="p">.</span><span class="nf">ReadLine</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<blockquote>
+<p>If the parameters are correct, the above command returns JSON structured like this representing the list of your clients using Inch:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"webhook_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{\"limit\":\"10\",\"page\":\"1\",\"sorting\":\"{}\",\"controller\":\"api/v1/webhooks\",\"action\":\"index\"}"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"details"</span><span class="p">:</span><span class="w"> </span><span class="s2">"webhooks / index"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T20:03:46.769+02:00"</span><span class="w">
+</span><span class="p">},</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint lets you retrieve the list of all the requests you performed. It is a paginated request.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://api-company.inchbase.com/api/v1/logs</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>The page number</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>The page size (default to 50)</td>
+</tr>
+</tbody></table>
+
           <h1 id="errors">Errors</h1>
 
 <p>The Inch API uses the following error codes:</p>
