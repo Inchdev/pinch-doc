@@ -19,6 +19,8 @@ includes:
   - webhook_types
   - webhooks
   - tickets
+  - servers
+  - logs
   - errors
 
 search: true
